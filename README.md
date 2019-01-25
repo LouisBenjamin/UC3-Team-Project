@@ -26,7 +26,7 @@ Online news and social networking service on which users post and interact with 
 | Harish Jayasankar         | harishjayasankar28@gmail.com                     | HarishJayasankar|
 | Harrison Ahn              | harrison.ahn@hotmail.ca                          | harrisonahn     |
 | Jérémie Chouteau-Lapierre | are neat                                         |                 |
-| Louis-Benjamin Durocher   | lbduro9012@gmail.com / benfit34@apexsciences.com |                 |
+| Louis-Benjamin Durocher   | lbduro9012@gmail.com / benfit34@apexsciences.com | LouisBenjamin   |
 | Muhammad Shah Newaz       | abir_mtl@hotmail.com                             |                 |
 | Mustafa Amiri             | amiri.mustafa@gmail.com                          |   mouss54       |
 | Oussama Farhat            | are neat                                         |                 |
