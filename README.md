@@ -26,7 +26,7 @@ Online news and social networking service on which users post and interact with 
 | Jérémie Chouteau-Lapierre | are neat      | 
 | Louis-Benjamin Durocher	| lbduro9012@gmail.com / benfit34@apexsciences.com| 
 | Muhammad Shah Newaz	 | are neat      | 
-| Mustafa Amiri	 | are neat      | 
+| Mustafa Amiri	 | mouss54      | 
 | Oussama Farhat	| are neat      | 
 | Shivangi Saini| are neat      |
 | Tashfia Proma| are neat      |
