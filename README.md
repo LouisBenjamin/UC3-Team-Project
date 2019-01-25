@@ -19,18 +19,19 @@ Online news and social networking service on which users post and interact with 
 * Like messages
 
 ## Team Members
-| Names       | Github    |      
-| ------------- |:-------------:| 
-| Harish Jayasankar | right-aligned |
-| Harrison Ahn   | centered      | 
-| Jérémie Chouteau-Lapierre | are neat      | 
-| Louis-Benjamin Durocher	| lbduro9012@gmail.com / benfit34@apexsciences.com| 
-| Muhammad Shah Newaz	 | are neat      | 
-| Mustafa Amiri	 | are neat      | 
-| Oussama Farhat	| are neat      | 
-| Shivangi Saini| are neat      |
-| Tashfia Proma| are neat      |
-| Yu Xiang Zhang| are neat      |
+| Names                     | Github                                           | GitHub username |
+| -------------             | :-------------:                                  | --------        |
+| Harish Jayasankar         | right-aligned                                    |                 |
+| Harrison Ahn              | centered                                         |                 |
+| Jérémie Chouteau-Lapierre | are neat                                         |                 |
+| Louis-Benjamin Durocher   | lbduro9012@gmail.com / benfit34@apexsciences.com |                 |
+| Muhammad Shah Newaz       | are neat                                         |                 |
+| Mustafa Amiri             | are neat                                         |                 |
+| Oussama Farhat            | are neat                                         |                 |
+| Shivangi Saini            | are neat                                         |                 |
+| Tashfia Proma             | are neat                                         |                 |
+| Yu Xiang Zhang            | basicyx@gmail.com                                | yuxiang-zhang   |
+|                           |                                                  |                 |
  
 
  		
