@@ -22,7 +22,7 @@ Online news and social networking service on which users post and interact with 
 
 | Names                     | Github                                           | GitHub username |
 | -------------             | :-------------:                                  | --------        |
-| Harish Jayasankar         | right-aligned                                    |                 |
+| Harish Jayasankar         | harishjayasankar28@gmail.com                     | HarishJayasankar|
 | Harrison Ahn              | harrison.ahn@hotmail.ca                          | harrisonahn     |
 | Jérémie Chouteau-Lapierre | are neat                                         |                 |
 | Louis-Benjamin Durocher   | lbduro9012@gmail.com / benfit34@apexsciences.com |                 |
