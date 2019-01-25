@@ -39,8 +39,8 @@ Online news and social networking service on which users post and interact with 
 
 * PHP
 * Java
-* html5
-* javascript
-* python
+* Html5
+* Javascript
+* Python
 * Bootstrap
 * MySQL - Phpmyadmin
