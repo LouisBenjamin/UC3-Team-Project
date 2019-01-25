@@ -17,6 +17,7 @@ Online news and social networking service on which users post and interact with 
 * Post message
 * Reshare posts
 * Like messages
+* Follow user
 
 ## Team Members
 
