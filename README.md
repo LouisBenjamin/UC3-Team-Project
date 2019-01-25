@@ -21,12 +21,12 @@ Online news and social networking service on which users post and interact with 
 ## Team Members
 | Names       | Github    |      
 | ------------- |:-------------:| 
-| Harish Jayasankar | right-aligned |
+| Harish Jayasankar | harishjayasankar28@gmail.com |
 | Harrison Ahn   | harrisonahn      | 
 | Jérémie Chouteau-Lapierre | are neat      | 
 | Louis-Benjamin Durocher	| lbduro9012@gmail.com / benfit34@apexsciences.com| 
 | Muhammad Shah Newaz	 | are neat      | 
-| Mustafa Amiri	 | mouss54      | 
+| Mustafa Amiri	 | are neat      | 
 | Oussama Farhat	| are neat      | 
 | Shivangi Saini| are neat      |
 | Tashfia Proma| are neat      |
