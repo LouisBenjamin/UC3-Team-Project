@@ -19,6 +19,7 @@ Online news and social networking service on which users post and interact with 
 * Like messages
 
 ## Team Members
+
 | Names                     | Github                                           | GitHub username |
 | -------------             | :-------------:                                  | --------        |
 | Harish Jayasankar         | right-aligned                                    |                 |
@@ -33,12 +34,13 @@ Online news and social networking service on which users post and interact with 
 | Yu Xiang Zhang            | basicyx@gmail.com                                | yuxiang-zhang   |
 |                           |                                                  |                 |
 
+
 ## Technologies/Framework
 
 * PHP
 * Java
-* html5
-* javascript
-* python
+* Html5
+* Javascript
+* Python
 * Bootstrap
 * MySQL - Phpmyadmin
