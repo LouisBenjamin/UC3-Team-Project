@@ -30,7 +30,7 @@ Online news and social networking service on which users post and interact with 
 | Muhammad Shah Newaz       | abir_mtl@hotmail.com                             |                 |
 | Mustafa Amiri             | amiri.mustafa@gmail.com                          |   mouss54       |
 | Oussama Farhat            | are neat                                         |                 |
-| Shivangi Saini            | shivangi.saini728@gmail.co                       | shiv728         |
+| Shivangi Saini            | shivangi.saini728@gmail.com                       | shiv728         |
 | Tashfia Proma             | are neat                                         |                 |
 | Yu Xiang Zhang            | basicyx@gmail.com                                | yuxiang-zhang   |
 |                           |                                                  |                 |
