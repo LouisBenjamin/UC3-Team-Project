@@ -4,7 +4,7 @@
 
 ## Objective
 
-Develop an twitter like software/blog/web app.
+Develop a twitter-like software/blog/web app.
 
 ## Project Description
 
@@ -25,16 +25,13 @@ Online news and social networking service on which users post and interact with 
 | Harrison Ahn              | centered                                         |                 |
 | Jérémie Chouteau-Lapierre | are neat                                         |                 |
 | Louis-Benjamin Durocher   | lbduro9012@gmail.com / benfit34@apexsciences.com |                 |
-| Muhammad Shah Newaz       | are neat                                         |                 |
+| Muhammad Shah Newaz       | abir_mtl@hotmail.com                             |                 |
 | Mustafa Amiri             | are neat                                         |                 |
 | Oussama Farhat            | are neat                                         |                 |
 | Shivangi Saini            | are neat                                         |                 |
 | Tashfia Proma             | are neat                                         |                 |
 | Yu Xiang Zhang            | basicyx@gmail.com                                | yuxiang-zhang   |
 |                           |                                                  |                 |
- 
-
- 		
 
 ## Technologies/Framework
 
