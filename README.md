@@ -4,7 +4,7 @@
 
 ## Objective
 
-Develop an twitter like software/blog/web app.
+Develop an twitter-like software/blog/web app.
 
 ## Project Description
 
