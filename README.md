@@ -21,7 +21,7 @@ Online news and social networking service on which users post and interact with 
 ## Team Members
 | Names       | Github    |      
 | ------------- |:-------------:| 
-| Harish Jayasankar | right-aligned |
+| Harish Jayasankar | harishjayasankar28@gmail.com |
 | Harrison Ahn   | harrisonahn      | 
 | Jérémie Chouteau-Lapierre | are neat      | 
 | Louis-Benjamin Durocher	| lbduro9012@gmail.com / benfit34@apexsciences.com| 
