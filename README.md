@@ -12,12 +12,17 @@ Online news and social networking service on which users post and interact with 
 
 ## Core Features
 
-* News
-* Create account
-* Post message
+* Posting Messages or "tweets"
+* "Like" a message
+* Follow users
+
+## Potential Features
+
 * Reshare posts
-* Like messages
-* Follow user
+* See generated news
+* Upload Pictures
+* Comment on "tweet"
+
 
 ## Team Members
 
@@ -25,12 +30,12 @@ Online news and social networking service on which users post and interact with 
 | -------------             | :-------------:                                  | --------        |
 | Harish Jayasankar         | harishjayasankar28@gmail.com                     | HarishJayasankar|
 | Harrison Ahn              | harrison.ahn@hotmail.ca                          | harrisonahn     |
-| Jérémie Chouteau-Lapierre | are neat                                         |                 |
+| Jérémie Chouteau-Lapierre |                                                  |                 |
 | Louis-Benjamin Durocher   | lbduro9012@gmail.com / benfit34@apexsciences.com | LouisBenjamin   |
 | Muhammad Shah Newaz       | abir_mtl@hotmail.com                             |                 |
 | Mustafa Amiri             | amiri.mustafa@gmail.com                          |   mouss54       |
 | Oussama Farhat            | are neat                                         |                 |
-| Shivangi Saini            | shivangi.saini728@gmail.com                       | shiv728         |
+| Shivangi Saini            | shivangi.saini728@gmail.com                      | shiv728         |
 | Tashfia Proma             | are neat                                         |                 |
 | Yu Xiang Zhang            | basicyx@gmail.com                                | yuxiang-zhang   |
 |                           |                                                  |                 |
