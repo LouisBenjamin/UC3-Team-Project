@@ -8,7 +8,15 @@ Develop an twitter like software/blog/web app.
 
 ## Project Description
 
+Online news and social networking service on which users post and interact with messages.
 
+## Core Features
+
+* News
+* Create account
+* Post message
+* Reshare posts
+* Like messages
 
 ## Team Members
 
@@ -23,7 +31,7 @@ Develop an twitter like software/blog/web app.
 * Tashfia Proma		
 * Yu Xiang Zhang
 
-## Technologies
+## Technologies/Framework
 
 * PHP
 * Java
