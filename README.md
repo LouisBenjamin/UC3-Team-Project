@@ -4,7 +4,7 @@
 
 ## Objective
 
-Develop an twitter like software/blog/web app.
+Develop a twitter like software/blog/web app.
 
 ## Project Description
 
@@ -22,7 +22,7 @@ Online news and social networking service on which users post and interact with 
 | Names       | Github    |      
 | ------------- |:-------------:| 
 | Harish Jayasankar | right-aligned |
-| Harrison Ahn   | centered      | 
+| Harrison Ahn   | harrison.ahn@hotmail.ca      | 
 | Jérémie Chouteau-Lapierre | are neat      | 
 | Louis-Benjamin Durocher	| lbduro9012@gmail.com / benfit34@apexsciences.com| 
 | Muhammad Shah Newaz	 | are neat      | 
