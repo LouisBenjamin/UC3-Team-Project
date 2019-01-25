@@ -6,22 +6,22 @@
 
 Develop an twitter like software/blog/web app.
 
-## Project
+## Project Description
 
 
 
 ## Team Members
 
-*Harish Jayasankar		
-*Harrison Ahn	Montreal	Canada
-*Jérémie Chouteau-Lapierre		
-*Louis-Benjamin Durocher		
-*Muhammad Shah Newaz		
-*Mustafa Amiri		
-*Oussama Farhat		
-*Shivangi Saini		
-*Tashfia Proma		
-*Yu Xiang Zhang
+* Harish Jayasankar
+* Harrison Ahn
+* Jérémie Chouteau-Lapierre		
+* Louis-Benjamin Durocher		
+* Muhammad Shah Newaz		
+* Mustafa Amiri		
+* Oussama Farhat		
+* Shivangi Saini		
+* Tashfia Proma		
+* Yu Xiang Zhang
 
 ## Technologies
 
