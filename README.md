@@ -36,7 +36,7 @@ Online social networking service on which users post and interact with messages.
 | Mustafa Amiri             | amiri.mustafa@gmail.com                          |   mouss54       |
 | Oussama Farhat            | are neat                                         |                 |
 | Shivangi Saini            | shivangi.saini728@gmail.com                      | shiv728         |
-| Tashfia Proma             | are neat                                         |                 |
+| Tashfia Proma             | tashfianaharinproma@hotmail.com                  | tashfia98       |
 | Yu Xiang Zhang            | basicyx@gmail.com                                | yuxiang-zhang   |
 |                           |                                                  |                 |
 
