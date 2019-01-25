@@ -19,17 +19,21 @@ Online news and social networking service on which users post and interact with 
 * Like messages
 
 ## Team Members
+| Names       | Github    |      
+| ------------- |:-------------:| 
+| Harish Jayasankar | right-aligned |
+| Harrison Ahn   | centered      | 
+| Jérémie Chouteau-Lapierre | are neat      | 
+| Louis-Benjamin Durocher	| lbduro9012@gmail.com / benfit34@apexsciences.com| 
+| Muhammad Shah Newaz	 | are neat      | 
+| Mustafa Amiri	 | are neat      | 
+| Oussama Farhat	| are neat      | 
+| Shivangi Saini| are neat      |
+| Tashfia Proma| are neat      |
+| Yu Xiang Zhang| are neat      |
+ 
 
-* Harish Jayasankar
-* Harrison Ahn
-* Jérémie Chouteau-Lapierre		
-* Louis-Benjamin Durocher		
-* Muhammad Shah Newaz		
-* Mustafa Amiri		
-* Oussama Farhat		
-* Shivangi Saini		
-* Tashfia Proma		
-* Yu Xiang Zhang
+ 		
 
 ## Technologies/Framework
 
