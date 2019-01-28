@@ -32,7 +32,7 @@ Online social networking service on which users post and interact with messages.
 | Harrison Ahn              | harrison.ahn@hotmail.ca                          | harrisonahn     |
 | Jérémie Chouteau-Lapierre |                                                  |                 |
 | Louis-Benjamin Durocher   | lbduro9012@gmail.com / benfit34@apexsciences.com | LouisBenjamin   |
-| Muhammad Shah Newaz       | abir_mtl@hotmail.com                             |                 |
+| Muhammad Shah Newaz       | abir_mtl@hotmail.com                             |     abirshah            |
 | Mustafa Amiri             | amiri.mustafa@gmail.com                          |   mouss54       |
 | Oussama Farhat            | are neat                                         |                 |
 | Shivangi Saini            | shivangi.saini728@gmail.com                      | shiv728         |
@@ -44,7 +44,7 @@ Online social networking service on which users post and interact with messages.
 ## Technologies/Framework
 
 * PHP
-* Java
+* Java/Spring Framework
 * Html5
 * Javascript
 * Python
