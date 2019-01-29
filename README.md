@@ -34,7 +34,7 @@ Online social networking service on which users post and interact with messages.
 | Louis-Benjamin Durocher   | lbduro9012@gmail.com / benfit34@apexsciences.com | LouisBenjamin   |
 | Muhammad Shah Newaz       | abir_mtl@hotmail.com                             |     abirshah            |
 | Mustafa Amiri             | amiri.mustafa@gmail.com                          |   mouss54       |
-| Oussama Farhat            | are neat                                         |                 |
+| Oussama Farhat            | o.farhat@live.com                                | oussamafarhat   |
 | Shivangi Saini            | shivangi.saini728@gmail.com                      | shiv728         |
 | Tashfia Proma             | tashfianaharinproma@hotmail.com                  | tashfia98       |
 | Yu Xiang Zhang            | basicyx@gmail.com                                | yuxiang-zhang   |
