@@ -30,7 +30,7 @@ Online social networking service on which users post and interact with messages.
 | -------------             | :-------------:                                  | --------        |
 | Harish Jayasankar         | harishjayasankar28@gmail.com                     | HarishJayasankar|
 | Harrison Ahn              | harrison.ahn@hotmail.ca                          | harrisonahn     |
-| Jérémie Chouteau-Lapierre | jeremie.chouteau.lapierre@gmail.com              | JayChouteau     |
+| Jérémie Chouteau-Lapierre | jeremie.chouteau.lapierre@gmail.com              |  JayChouteau    |
 | Louis-Benjamin Durocher   | lbduro9012@gmail.com / benfit34@apexsciences.com | LouisBenjamin   |
 | Muhammad Shah Newaz       | abir_mtl@hotmail.com                             | abirshah        |
 | Mustafa Amiri             | amiri.mustafa@gmail.com                          | mouss54         |
