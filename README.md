@@ -8,7 +8,7 @@ Develop a twitter-like software/blog/web application.
 
 ## Project Description
 
-Online social networking service on which users post and interact with messages.
+In every aspect of our lives, communication plays an important role. This online social networking service allows users to post and interact using messages.
 
 ## Core Features
 
