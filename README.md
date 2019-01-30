@@ -13,7 +13,7 @@ Online social networking service on which users post and interact with messages.
 ## Core Features
 
 * Posting messages or "tweets"
-* "Like" a message
+* "Like" a tweet
 * Follow users
 
 ## Potential Features
