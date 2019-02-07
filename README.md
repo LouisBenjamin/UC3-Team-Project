@@ -43,6 +43,8 @@ In every aspect of our lives, communication plays an important role. This online
 
 ## Technologies/Framework
 
+* XAMPP
+* Apache
 * PHP
 * HTML
 * Javascript
