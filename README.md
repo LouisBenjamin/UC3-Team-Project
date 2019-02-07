@@ -4,7 +4,7 @@
 
 ## Objective
 
-Develop a twitter-like software/blog/web application.
+Develop a twitter-like web application called *Tato* based on the word potato.
 
 ## Project Description
 
@@ -12,9 +12,9 @@ In every aspect of our lives, communication plays an important role. This online
 
 ## Core Features
 
-* Posting messages or "tweets"
-* "Like" a tweet
-* Follow users
+* Posting messages or "tatos"
+* "Like" a tato
+* Follow other Tato users
 
 ## Potential Features
 
