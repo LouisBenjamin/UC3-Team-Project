@@ -44,8 +44,8 @@ In every aspect of our lives, communication plays an important role. This online
 ## Technologies/Framework
 
 * PHP
-* Java/Spring Framework
 * HTML
 * Javascript
-* Bootstrap
-* MySQL/Phpmyadmin
+* Bootstrap/CSS
+* MySQL
+* Phpmyadmin
