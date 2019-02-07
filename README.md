@@ -21,7 +21,7 @@ In every aspect of our lives, communication plays an important role. This online
 * Reshare posts
 * See generated news
 * Upload Pictures
-* Comment on "tweet"
+* Threads where users can disscuss on a Tato
 
 
 ## Team Members
