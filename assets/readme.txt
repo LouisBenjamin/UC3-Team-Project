@@ -1,0 +1,1 @@
+Here goes all JS, CSS and images files
