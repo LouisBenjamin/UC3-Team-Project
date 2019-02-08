@@ -37,7 +37,7 @@ In every aspect of our lives, communication plays an important role. This online
 | Oussama Farhat            | o.farhat@live.com                                | oussamafarhat   |
 | Shivangi Saini            | shivangi.saini728@gmail.com                      | shiv728         |
 | Tashfia Proma             | tashfianaharinproma@hotmail.com                  | tashfia98       |
-| Yu Xiang Zhang            | basicyx@gmail.com                                | yuxiang-zhang   |
+| Yu Xiang Zhang            | yuxiang.zhang@mail.concordia.ca                  | yuxiang-zhang   |
 |                           |                                                  |                 |
 
 
