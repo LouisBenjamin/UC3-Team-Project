@@ -1,7 +1,7 @@
 <?php
-    $dsn   = 'mysql:host=localhost; dbname=tato';
+    $dsn   = 'mysql:dbname=tato;unix_socket=/cloudsql/tato-231220:northamerica-northeast1:bestteam2019';
     $user ='root';
-    $pass='';
+    $pass='tatouc3';
 
     try{
     	$pdo = new pdo($dsn, $user, $pass);
