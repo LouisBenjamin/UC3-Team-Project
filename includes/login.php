@@ -1,11 +1,9 @@
 <?php
 if(isset($_POST['login']) && !empty($_POST['login'])){
 	$email    = $_POST['email'];
-	$password = $_POST['password']
+	$password = $_POST['psw'];
 
-	if(!empty($email) or !empty($password)){
-		/*$email= $getUser->validateInput($email);
-	$password = $getUser->validateInput($password);*/
+if(!empty($email) or !empty($password)){
        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
        	$error="Invalid format";
        }else{
@@ -23,21 +21,21 @@ if(isset($_POST['login']) && !empty($_POST['login'])){
 
 
 	<div class="login">
-		<h3>Login</h3>
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter email" name="email" required>
+	<!-- 	<h3>Login</h3> -->
+   <!--  <label for="email"><b>Email</b></label> -->
+    <input type="text" placeholder="Please Enter your email" name="email" required>
 <br />
 <br />
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <!-- <label for="psw"><b>Password</b></label> -->
+    <input type="password" placeholder="Enter Password" name="psw" required>   <input type="submit" name="login" value="Log in"/>
 
-    <button type="submit" name="login">Login</button>
-    <? php
-    if(isset($error)){
-    	echo '<div class="span-fp-error">'.$error.'</div>';
-    } 
-    ?>
+   <!--  <button type="submit" name="login">Login</button> -->
+   
 
   </div>
-	
+	 <?php
+    if(isset($error)){
+      echo '<div class="span-fp-error">'.$error.'</div>';
+    } 
+    ?>
 	</form>

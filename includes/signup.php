@@ -3,7 +3,7 @@
 if(isset($_POST['signup'])){
 	$name    = $_POST['uname'];
 	$email    = $_POST['email'];
-	$password = $_POST['password']
+	$password = $_POST['psw'];
 
 	if(!empty($email) or !empty($password) or !empty($name) ){
       $error="All fields are mandatory";
@@ -33,20 +33,21 @@ if(isset($_POST['signup'])){
 <div class="signup-div"> 
 	<h3>Sign up </h3>
 
-    <label for="uname"><b>Name</b></label>
+   <!--  <label for="uname"><b>Name</b></label> -->
     <input type="text" placeholder="Enter Username" name="uname" required>
 <br />
 <br />
-<label for="email"><b>Email</b></label>
+<!-- <label for="email"><b>Email</b></label> -->
     <input type="text" placeholder="Enter Email" name="email" required>
 
 <br />
 <br />
-    <label for="psw"><b>Password</b></label>
+ <!--    <label for="psw"><b>Password</b></label> -->
     <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit" name="signup">SignUp</button>
-    <? php
+     
+     <input type="submit" name="signup" Value="Signup for Tato">
+   <!-- < button type="submit" name="signup">SignUp</button> -->
+    <?php
     if(isset($error)){
     	echo '<div class="span-fp-error">'.$error.'</div>';
     } 

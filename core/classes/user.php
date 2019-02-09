@@ -47,15 +47,15 @@ class User{
 
    public function register($email,$name,$password){
 
-   	$stmt = $this->pdo->prepare("INSERT INTO 'users' ('email','password','name') VALUES(:email, :password, :name)  ");
+   	$stmt = $this->pdo->prepare("INSERT INTO 'users' ('email','password','name') VALUES(:email, :password, :name) ");
 
    	$stmt->bindParam(":email", $email, PDO::PARAM_STR);
 		$stmt->bindParam(":password", $password, PDO::PARAM_STR);
 		$stmt->bindParam(":name", $name, PDO::PARAM_STR);
 		$stmt->execute();
 
-		$user_id=$this->pdo->lastInsertId()
-		$_SESSION['user_id']=$user_id;
+		$user_id=$this->pdo->lastInsertId();
+		$SESSION['user_id']=$user->user_id;
 
    }
 
