@@ -30,13 +30,6 @@
 
 		<div class="nav-right">
 			<ul>
-				<li>
-					<input type="text" placeholder="Search" class="search"/>
-					<i class="fa fa-search" aria-hidden="true"></i>
-					<div class="search-result">			
-					</div>
-				</li>
-
 				<li class="hover"><label class="drop-label" for="drop-wrap1"><img src="PROFILE-IMAGE"/></label>
 				<input type="checkbox" id="drop-wrap1">
 				<div class="drop-wrap">
