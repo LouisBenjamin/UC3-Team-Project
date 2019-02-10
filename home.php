@@ -1,5 +1,4 @@
 <?php
-
 	include 'core/init.php';
 ?>
 
@@ -26,8 +25,6 @@
 		<div class="nav-left">
 			<ul>
 				<li><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
-				<li><a href="i/notifications"><i class="fa fa-bell" aria-hidden="true"></i>Notification</a></li>
-				<li><i class="fa fa-envelope" aria-hidden="true"></i>Messages</li>
 			</ul>
 		</div><!-- nav left ends-->
 
