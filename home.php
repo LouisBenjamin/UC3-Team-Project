@@ -52,7 +52,7 @@
 					</div>
 				</div>
 				</li>
-				<li><label class="addTweetBtn">Tweet</label></li>
+				<li><label class="addTweetBtn">Tato</label></li>
 			</ul>
 		</div><!-- nav right ends-->
 
@@ -92,7 +92,7 @@
 					<div class="number-wrapper">
 						<div class="num-box">
 							<div class="num-head">
-								TWEETS
+								Tatos
 							</div>
 							<div class="num-body">
 								10
@@ -127,16 +127,16 @@
 		</div><!-- in left end-->
 		<div class="in-center">
 			<div class="in-center-wrap">
-				<!--TWEET WRAPPER-->
-				<div class="tweet-wrap">
-					<div class="tweet-inner">
-						 <div class="tweet-h-left">
-						 	<div class="tweet-h-img">
+				<!--Tato WRAPPER-->
+				<div class="Tato-wrap">
+					<div class="Tato-inner">
+						 <div class="Tato-h-left">
+						 	<div class="Tato-h-img">
 						 	<!-- PROFILE-IMAGE -->
 						 		<img src="PROFILE-IMAGE"/>
 						 	</div>
 						 </div>
-						 <div class="tweet-body">
+						 <div class="Tato-body">
 						 <form method="post" enctype="multipart/form-data">
 							<textarea class="status" name="status" placeholder="Type Something here!" rows="4" cols="50"></textarea>
  						 	<div class="hash-box">
@@ -144,36 +144,36 @@
   						 		</ul>
 						 	</div>
  						 </div>
-						 <div class="tweet-footer">
+						 <div class="Tato-footer">
 						 	<div class="t-fo-left">
 						 		<ul>
 						 			<input type="file" name="file" id="file"/>
 						 			<li><label for="file"><i class="fa fa-camera" aria-hidden="true"></i></label>
-						 			<span class="tweet-error"></span>
+						 			<span class="Tato-error"></span>
 						 			</li>
 						 		</ul>
 						 	</div>
 						 	<div class="t-fo-right">
 						 		<span id="count">140</span>
-						 		<input type="submit" name="tweet" value="tweet"/>
+						 		<input type="submit" name="Tato" value="Tato"/>
 				 		</form>
 						 	</div>
 						 </div>
 					</div>
-				</div><!--TWEET WRAP END-->
+				</div><!--Tato WRAP END-->
 
 			
-				<!--Tweet SHOW WRAPPER-->
-				 <div class="tweets">
- 				  	<!--TWEETS HERE-->
+				<!--Tato SHOW WRAPPER-->
+				 <div class="Tatos">
+ 				  	<!--Tatos HERE-->
  				 </div>
- 				<!--TWEETS SHOW WRAPPER-->
+ 				<!--Tatos SHOW WRAPPER-->
 
 		    	<div class="loading-div">
 		    		<img id="loader" src="assets/images/loading.svg" style="display: none;"/> 
 		    	</div>
 				<div class="popupTweet"></div>
-				<!--Tweet END WRAPER-->
+				<!--Tato END WRAPER-->
  			
 			</div><!-- in left wrap-->
 		</div><!-- in center end -->
