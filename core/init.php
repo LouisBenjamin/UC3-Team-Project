@@ -1,5 +1,5 @@
  <?php
-    include 'databases/connection.php';
+    include 'database/connection.php';
     include  'classes/user.php';
 
     global $pdo;

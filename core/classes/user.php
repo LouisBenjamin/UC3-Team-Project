@@ -21,7 +21,6 @@ class User{
 
 		$user=$stmt->fetch(PDO::FETCH_OBJ);
 		$count=$stmt->rowCount();
-
 		if($count > 0){
                 $SESSION['user_id']= $user->user_id;
                 header('Location : home.php');
