@@ -13,7 +13,7 @@
 	
 	<body>
 		<div class="front-img">
-			<img src="assets/images/background.jpg"></img>
+			<img src="assets/images/montreal.jpg"></img>
 		</div>	
 
 		
