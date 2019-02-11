@@ -1,13 +1,18 @@
 <?php
 //phpinfo();
 
-include "includes/dbconfig.php";
-include "includes/db.php";
+#include "includes/dbconfig.php";
+#include "includes/db.php";
+include  'core/init.php';
 
-session_start();
-
-$db = new Db();
-$result = $db->query("SELECT * FROM `tatos` ORDER BY created DESC");
+$dsn  = "mysql:host=35.203.99.197;dbname=tato";
+    $user = "test";
+    $pass = "tatouc3";
+$conn = new PDO($dsn, $user, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $conn->prepare("SELECT * FROM tatos ORDER BY created DESC");
+    $stmt->execute();
+$result = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_LAST);
 
 ?>
 <!DOCTYPE html>
@@ -50,9 +55,10 @@ $result = $db->query("SELECT * FROM `tatos` ORDER BY created DESC");
 	
 
         <?php
-        while ($row = mysqli_fetch_array($result)) {
+        echo $result;
+       while ($row = $result->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
 
-            echo '<h1>' . $row['name'] . '</h1><p>' . $row['content'] . '</p><div><span class="badge">' . $row['created'] . '</span>
+            echo '<h1>' . $row['0'] . '</h1><p>' . $row['1'] . '</p><div><span class="badge">' . $row['2']. '</span>
            <div class="pull-right">
                 <span class="label label-default">category</span>
                 <span class="label label-primary">category</span>
@@ -63,7 +69,7 @@ $result = $db->query("SELECT * FROM `tatos` ORDER BY created DESC");
             </div>
         </div>
         <hr>';
-        }
+       }
         ?>
     </div>
 </div>
