@@ -8,9 +8,9 @@
 	<head>
 		<title>Tato</title>
 		  <meta charset="UTF-8" />
-		  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>  
+		  <link rel="stylesheet" href="assets/css/font-awesome.css"/>  
  	  	  <link rel="stylesheet" href="assets/css/style-complete.css"/> 
-   		  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>  	  
+   		  <script src="assets/js/jquery.min.js"></script>  
 	</head>
 	<!--Helvetica Neue-->
 <body>
@@ -30,13 +30,6 @@
 
 		<div class="nav-right">
 			<ul>
-				<li>
-					<input type="text" placeholder="Search" class="search"/>
-					<i class="fa fa-search" aria-hidden="true"></i>
-					<div class="search-result">			
-					</div>
-				</li>
-
 				<li class="hover"><label class="drop-label" for="drop-wrap1"><img src="PROFILE-IMAGE"/></label>
 				<input type="checkbox" id="drop-wrap1">
 				<div class="drop-wrap">
