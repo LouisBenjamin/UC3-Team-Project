@@ -1,14 +1,20 @@
 <?php
 
-    #include "includes/dbconfig.php";
-    #include "includes/db.php";
     include  'core/init.php';
 
-   
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $pdo->prepare("SELECT * FROM tatos");
-    $stmt->execute();
-    $result = $stmt->fetchAll();
+    $user_id = $_SESSION['user_id'];
+    echo "UID: " . $user_id;
+    if(isset($_POST['tato'])) {
+        $text = htmlspecialchars($_POST['tatoText']);
+
+        if (strlen($text) > 140){
+            $error = "Length exceeds 140 characters. ";
+        }
+        else{
+            $getTato->postTato($user_id,$text);
+        }
+    }
 
 ?>
 
@@ -38,34 +44,18 @@
 <div class="container">
    <div class="col-md-12">
 	<h4>Leave a Tato</h4>
-      <form role="form">
+      <form role="form" method="post">
         <div class="form-group">
-          <textarea class="form-control" rows="3" required></textarea>
-  
-        </div>
-        <button type="submit" class="btn btn-success">Submit</button>
-      </form>
-	
-	
-	
-	
-	
-
-        <?php
-            foreach ($result as $row) {
-                echo '<h1>' . $row['user_id'] . '</h1><p>' . $row['status'] . '</p><div><span class="badge">' . $row['created'].'</span>
-                   <div class="pull-right">
-                        <span class="label label-default">category</span>
-                        <span class="label label-primary">category</span>
-                        <span class="label label-success">category</span>
-                        <span class="label label-info">category</span>
-                        <span class="label label-warning">category</span>
-                        <span class="label label-danger">category</span>
-                    </div>
-                </div>
-                <hr>';
-            }
+          <textarea class="form-control" name="tatoText" rows="3" required></textarea>
+       <?php
+            if(isset($error)){
+              echo '<div class="span-fp-error">'.$error.'</div>';
+            } 
         ?>
+        </div>
+        <button type="submit" name="tato" class="btn btn-success">Submit</button>
+      </form>
+      <?php $getTato->showTatoes(); ?>
     </div>
 </div>
 
