@@ -1,7 +1,5 @@
 <?php
 
-    #include "includes/dbconfig.php";
-    #include "includes/db.php";
     include  'core/init.php';
 
    
