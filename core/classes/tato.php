@@ -6,9 +6,9 @@ class Tato {
         $this->pdo = $pdo;
     }
 
-    public function postTato($text) {
+    public function postTato($uid,$text) {
         $stmt = $this->pdo->prepare("INSERT INTO tatos (user_id,status) VALUES (:uid,:text)");
-        $stmt->bindParam(":uid", $getUser->user_id);
+        $stmt->bindParam(":uid", $uid);
         $stmt->bindParam(":text", $text);
         $stmt->execute();
     }

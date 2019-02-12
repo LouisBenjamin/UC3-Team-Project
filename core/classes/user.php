@@ -17,7 +17,7 @@ class User{
         $user=$stmt->fetch(PDO::FETCH_OBJ);
         $count=$stmt->rowCount();
         if($count > 0){
-            $SESSION['user_id']= $user->user_id;
+            $_SESSION['user_id']= $user->user_id;
             header('Location: home.php');
         }else{
             return false;
@@ -42,6 +42,13 @@ class User{
         $stmt->bindParam(":email", $email);
         $stmt->bindParam(":password", $password);
         $stmt->execute();
+    }
+
+    public function getData($uid) {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE user_id = :uid");
+        $stmt->bindParam(":uid",$uid,PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 }
 ?>
