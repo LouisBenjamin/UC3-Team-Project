@@ -1,20 +1,15 @@
 <?php
-//phpinfo();
 
-#include "includes/dbconfig.php";
-#include "includes/db.php";
-include  'core/init.php';
+    include  'core/init.php';
 
-$dsn  = "mysql:host=35.203.99.197;dbname=tato";
-    $user = "test";
-    $pass = "tatouc3";
-$conn = new PDO($dsn, $user, $pass);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT * FROM tatos ORDER BY created DESC");
+   
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $pdo->prepare("SELECT * FROM tatos");
     $stmt->execute();
-$result = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_LAST);
+    $result = $stmt->fetchAll();
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,21 +50,19 @@ $result = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_LAST);
 	
 
         <?php
-        echo $result;
-       while ($row = $result->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
-
-            echo '<h1>' . $row['0'] . '</h1><p>' . $row['1'] . '</p><div><span class="badge">' . $row['2']. '</span>
-           <div class="pull-right">
-                <span class="label label-default">category</span>
-                <span class="label label-primary">category</span>
-                <span class="label label-success">category</span>
-                <span class="label label-info">category</span>
-                <span class="label label-warning">category</span>
-                <span class="label label-danger">category</span>
-            </div>
-        </div>
-        <hr>';
-       }
+            foreach ($result as $row) {
+                echo '<h1>' . $row['user_id'] . '</h1><p>' . $row['status'] . '</p><div><span class="badge">' . $row['created'].'</span>
+                   <div class="pull-right">
+                        <span class="label label-default">category</span>
+                        <span class="label label-primary">category</span>
+                        <span class="label label-success">category</span>
+                        <span class="label label-info">category</span>
+                        <span class="label label-warning">category</span>
+                        <span class="label label-danger">category</span>
+                    </div>
+                </div>
+                <hr>';
+            }
         ?>
     </div>
 </div>

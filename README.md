@@ -1,4 +1,4 @@
-
+﻿
 
 # SOEN 341 - Team UC3
 
@@ -19,7 +19,6 @@ In every aspect of our lives, communication plays an important role. This online
 ## Potential Features
 
 * Reshare posts
-* See generated news
 * Upload Pictures
 * Threads where users can disscuss on a Tato
 
@@ -41,13 +40,15 @@ In every aspect of our lives, communication plays an important role. This online
 |                           |                                                  |                 |
 
 
-## Technologies/Framework
+## Technologies/Tools
 
+* Google Cloud
 * XAMPP
 * Apache
 * PHP
 * HTML
-* Javascript
-* Bootstrap/CSS
+* Jquery
+* CSS
+* Bootstrap
 * MySQL
-* Phpmyadmin
+* MySQL Workbench
