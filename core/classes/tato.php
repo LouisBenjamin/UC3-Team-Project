@@ -6,7 +6,14 @@ class Tato {
         $this->pdo = $pdo;
     }
 
-    public function tatoes() {
+    public function postTato($text) {
+        $stmt = $this->pdo->prepare("INSERT INTO tatos (user_id,status) VALUES (:uid,:text)");
+        $stmt->bindParam(":uid", $getUser->user_id);
+        $stmt->bindParam(":text", $text);
+        $stmt->execute();
+    }
+
+    public function showTatoes() {
         $stmt = $this->pdo->prepare("SELECT * FROM tatos");
         $stmt->execute();
         $result = $stmt->fetchAll();

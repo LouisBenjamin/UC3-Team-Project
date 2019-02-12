@@ -1,8 +1,22 @@
 <?php
 
-include  'core/init.php';
+    include  'core/init.php';
 
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    if(isset($_POST['tato'])) {
+        $text = $_POST['tatoText'];
+
+        if(empty($text)){
+            $error="Content cannot be empty.";
+        }
+        else{
+            if(strlen($text) > 140){
+                $error = "Length exceeds 140 characters. ";
+            }
+            $getTato->postTato($text);
+        }
+    }
 
 ?>
 
@@ -32,14 +46,19 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 <div class="container">
    <div class="col-md-12">
 	<h4>Leave a Tato</h4>
-      <form role="form">
+      <form role="form" method="post">
         <div class="form-group">
-          <textarea class="form-control" rows="3" required></textarea>
-  
+          <textarea class="form-control" name="tatoText" rows="3" required></textarea>
+
         </div>
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" name="tato" class="btn btn-success">Submit</button>
+       <?php
+            if(isset($error)){
+              echo '<div class="span-fp-error">'.$error.'</div>';
+            } 
+        ?>
       </form>
-      <?php $getTato->tatoes(); ?>
+      <?php $getTato->showTatoes(); ?>
     </div>
 </div>
 
