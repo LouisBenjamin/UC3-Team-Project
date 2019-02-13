@@ -54,6 +54,14 @@
         ?>
         </div>
         <button type="submit" name="tato" class="btn btn-success">Submit</button>
+	      
+       //Added
+      <button type="button" class="btn btn-default btn-sm">
+	<span class="glyphicon glyphicon-thumbs-up"></span> Like
+      </button> 
+	      
+	      
+	      
       </form>
       <?php $getTato->showTatoes(); ?>
     </div>
