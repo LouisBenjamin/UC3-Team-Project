@@ -8,12 +8,17 @@ class Tato {
 
     public function postTato($uid,$text) {
         $ins_db = $this->pdo->prepare("INSERT INTO tatos (user_id,status,created) VALUES (:uid,:text,:created)");
-        $user = 
         $ins_db->execute(array(
             ':uid' => $uid,
             ':text' => $text,
-            ':created' => date("Y-m-d H:i:s", time())
+            ':created' => date("Y-m-d H:i:s", time()),
         ));
+    }
+
+    function getUnameFromUid($uid){
+        $sel_user = $this->pdo->prepare("SELECT username FROM users WHERE user_id = ? limit 1");
+        $sel_user->execute(array($uid));
+        return $sel_user->fetch(PDO::FETCH_OBJ)->username;
     }
 
     public function showTatoes() {
@@ -22,7 +27,8 @@ class Tato {
         $result = $sel_data->fetchAll();
 
         foreach ($result as $row) {
-            echo '<p>' . $row['user_id'].':'. '</p><p>' . $row['status'] . '</p><div><span class="badge">' . $row['created'].'</span>
+            $uname = $this->getUnameFromUid($row['user_id']);
+            echo '<p>' . $uname .':'. '</p><p>' . $row['status'] . '</p><div><span class="badge">' . $row['created'].'</span>
                    <div class="pull-right">
                         <span class="label label-default">category</span>
                         <span class="label label-primary">category</span>
