@@ -44,10 +44,9 @@ class User{
         $stmt->execute();
     }
 
-    public function getData($uid) {
+    public static function getData($uid) {
         $stmt = $this->pdo->prepare("SELECT * FROM users WHERE user_id = :uid");
-        $stmt->bindParam(":uid",$uid,PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt->execute([$uid]);
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 }
