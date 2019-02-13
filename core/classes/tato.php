@@ -29,7 +29,12 @@ class Tato {
         foreach ($result as $row) {
             $uname = $this->getUnameFromUid($row['user_id']);
             echo '<p>' . $uname .':'. '</p><p>' . $row['status'] . '</p><div><span class="badge">' . $row['created'].'</span>
-                   <div class="pull-right">
+            <div class="center">
+                <button type="button" class="btn btn-default btn-sm">
+                	<span class="glyphicon glyphicon-thumbs-up"></span> Like
+              	</button>
+		    </div>
+		    <div class="pull-right">
                         <span class="label label-default">category</span>
                         <span class="label label-primary">category</span>
                         <span class="label label-success">category</span>
@@ -37,7 +42,7 @@ class Tato {
                         <span class="label label-warning">category</span>
                         <span class="label label-danger">category</span>
                     </div>
-                </div>
+		</div>
                 <hr>';
         }
     }
