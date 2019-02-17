@@ -22,7 +22,7 @@ class Tato {
     }
 
     public function showTatoes() {
-        $sel_data = $this->pdo->prepare("SELECT * FROM tatos");
+        $sel_data = $this->pdo->prepare("SELECT * FROM tatos ORDER BY created DESC");
         $sel_data->execute();
         $result = $sel_data->fetchAll();
 
