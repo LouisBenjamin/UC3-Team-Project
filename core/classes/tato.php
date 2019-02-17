@@ -15,10 +15,13 @@ class Tato {
         ));
     }
 
-    function getUnameFromUid($uid){
+    function getUserFromId($uid){
         $sel_user = $this->pdo->prepare("SELECT username FROM users WHERE user_id = ? limit 1");
+        fg
+        fg
+
         $sel_user->execute(array($uid));
-        return $sel_user->fetch(PDO::FETCH_OBJ)->username;
+        return $sel_user->fetch(PDO::FETCH_OBJ);
     }
 
     public function showTatoes() {
@@ -27,8 +30,8 @@ class Tato {
         $result = $sel_data->fetchAll();
 
         foreach ($result as $row) {
-            $uname = $this->getUnameFromUid($row['user_id']);
-            echo '<p>' . $uname .':'. '</p><p>' . $row['status'] . '</p><div><span class="badge">' . $row['created'].'</span>
+            $user_data = $this->getUserFromId($row['user_id']);
+            echo '<p>' . $user_data->username .':'. '</p><p>' . $row['status'] . '</p><div><span class="badge">' . $row['created'].'</span>
             <div class="center">
                 <button type="button" class="btn btn-default btn-sm">
                 	<span class="glyphicon glyphicon-thumbs-up"></span> Like
