@@ -28,13 +28,34 @@
 		<div class="content-right">
 			<!-- Log In Section -->
 			<div class="login-wrapper">
-			  <?php include 'includes/login.php';?>
+			
+			  <?php
+    			  /* Abir Check if the session variable user is set */
+    			  if($_SESSION["user"] != "NULL") {
+    			      echo "<p> Show logout button </p>";
+    			  }
+    			  else {
+    			      include 'includes/login.php';
+    			  }
+    			  /* Abir */
+			     
+			  ?>
 			</div>
 			<!--log in wrapper end-->
 
 			<!-- SignUp Section -->
 			<div class="signup-wrapper">
-			   <?php include 'includes/signup.php';?>
+			   <?php
+			   /* Abir Check if the session variable user is set */
+			   if($_SESSION["user"] != "NULL") {
+			      echo "<p> Already logged in </p>";
+			   }
+			   else {
+			       echo "<p> Not logged in <p>";
+			       include 'includes/signup.php';
+			   }
+			   /* Abir */
+			   ?>
 			</div>
 			<!-- SIGN UP wrapper end -->
 
