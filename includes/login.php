@@ -3,14 +3,22 @@ if(isset($_POST['login']) && !empty($_POST['login'])){
   $email    = $_POST['email'];
   $password = $_POST['psw'];
 
-if(!empty($email) or !empty($password)){
-       if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+  if(!empty($email) or !empty($password)){
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
         $error="Invalid format";
-       }else{
-              if($getUser->login($email, $password) === false){
-                $error="The email or password is incorrect";
-              }
-       }
+    }
+    else{
+      if($getUser->login($email, $password) === false){
+        $error="The email or password is incorrect";
+      }
+    }
+    /* Abir Set the user variable if user authenticated */
+    // Now everything user related, shud have a check like
+    // if($_SESSION["user"] != "NULL")
+    if(!(isset($error))) {
+        $_SESSION["user"] = $email;
+    }
+    /* Abir Ends */
   }else{
     $error="Please enter the credentials"; 
   }
@@ -30,7 +38,7 @@ if(!empty($email) or !empty($password)){
    <?php
     if(isset($error)){
       echo '<div class="span-fp-error">'.$error.'</div>';
-    } 
+    }
     ?>
   </form>
 </div>
