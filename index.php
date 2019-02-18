@@ -1,5 +1,7 @@
- <?php
- 		include  'core/init.php';
+<?php 
+//error_reporting(E_ALL);
+//ini_set("display_errors", TRUE);
+require 'core/init.php';
 ?>
 <html>
 	<head>
@@ -12,58 +14,50 @@
 	
 	<body>
 		<div class="front-img">
-			<img src="assets/images/montreal.jpg"></img>
+			<img src="assets/images/montreal.jpg" />
 		</div>	
 
 		
-<div class="main-container">
-		<!-- content left-->
-		<div class="content-left">
-			<h1>Welcome to Tato.</h1>
-			<br/>
-			<p>A place to connect with your friends — and Get updates from the people you love, And get the updates from the world and things that interest you.</p>
-		</div><!-- content left ends -->	
+        <div class="main-container">
+		    <!-- content left-->
+		    <div class="content-left">
+			    <h1>Welcome to Tato.</h1>
+			    <br/>
+			    <p>A place to connect with your friends — and Get updates from the people you love, And get the updates from the world and things that interest you.</p>
+		    </div><!-- content left ends -->
 
-		<!-- content right ends -->
-		<div class="content-right">
-			<!-- Log In Section -->
-			<div class="login-wrapper">
-			
-			  <?php
-    			  /* Abir Check if the session variable user is set */
-    			  if($_SESSION["user"] != "NULL") {
-    			      echo "<p> Show logout button </p>";
-    			  }
-    			  else {
-    			      include 'includes/login.php';
-    			  }
-    			  /* Abir */
-			     
-			  ?>
-			</div>
-			<!--log in wrapper end-->
+		    <!-- content right ends -->
+		    <div class="content-right">
+			    <!-- Log In Section -->
+			    <div class="login-wrapper">
+                    <!--     			    /* Abir Check if the session variable user is set */ -->
+                    <?php if(isset($_SESSION['user_id'])){ ?>
+    			        <p> Show logout button </p>
+    			    <?php
+                    }
+                    else{
+    			        require 'includes/login.php';
+                    }
+                    ?>
+			    </div>
+			    <!--log in wrapper end-->
 
-			<!-- SignUp Section -->
-			<div class="signup-wrapper">
-			   <?php
-			   /* Abir Check if the session variable user is set */
-			   if($_SESSION["user"] != "NULL") {
-			      echo "<p> Already logged in </p>";
-			   }
-			   else {
-			       echo "<p> Not logged in <p>";
-			       include 'includes/signup.php';
-			   }
-			   /* Abir */
-			   ?>
-			</div>
-			<!-- SIGN UP wrapper end -->
+			    <!-- SignUp Section -->
+			    <div class="signup-wrapper">
+			        <?php if(isset($_SESSION['user_id'])): ?>
+			            <p> Already logged in, go to <a href="home.php"> home </a>. </p>
+			        <?php else: ?>
+			            <p> Not logged in <p>
+			        <?php require 'includes/signup.php';
+                    endif; ?>
+			    </div>
+			    <!-- SIGN UP wrapper end -->
 
-		</div><!-- content right ends -->
+		    </div><!-- content right ends -->
 
-	</div><!-- main container end -->
+	    </div><!-- main container end -->
 
 
-	<!-- ends wrapper -->
+	    <!-- ends wrapper -->
 	</body>
 </html>
