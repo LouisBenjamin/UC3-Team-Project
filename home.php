@@ -6,12 +6,10 @@ date_default_timezone_set("EST");
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $user_id = $_SESSION['user_id'];
 
-/* Abir */
-$loggedInUser = "NULL";
-if($_SESSION["user"] != "NULL") {
-    $loggedInUser = $_SESSION['user'];
+//$loggedInUser = "NULL";
+if(isset($_SESSION['user_id'])) {
+    $loggedInUser = $_SESSION['user_id'];
 }
-/* Abir Ends */
 
 if(isset($_POST['tato'])) {
     $text = htmlspecialchars($_POST['tatoText']);
