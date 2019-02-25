@@ -22,28 +22,32 @@ class Tato {
     }
 
     public function showTatoes() {
-        $sel_data = $this->pdo->prepare("SELECT * FROM tatos ORDER BY created DESC");
+        $sel_data = $this->pdo->prepare("SELECT user_id,status,created FROM tatos ORDER BY created DESC");
         $sel_data->execute();
         $result = $sel_data->fetchAll();
 
         foreach ($result as $row) {
             $user_data = $this->getUserFromId($row['user_id']);
-            echo '<p>' . $user_data->username .':'. '</p><p>' . $row['status'] . '</p><div><span class="badge">' . $row['created'].'</span>
-            <div class="center">
-                <button type="button" class="btn btn-default btn-sm">
-                	<span class="glyphicon glyphicon-thumbs-up"></span> Like
-              	</button>
-		    </div>
-		    <div class="pull-right">
-                        <span class="label label-default">category</span>
-                        <span class="label label-primary">category</span>
-                        <span class="label label-success">category</span>
-                        <span class="label label-info">category</span>
-                        <span class="label label-warning">category</span>
-                        <span class="label label-danger">category</span>
-                    </div>
-		</div>
-                <hr>';
+            echo "
+<p><a href=\"profile.php?id={$row['user_id']}\" class=\"username\">{$user_data->username}</a>:</p>
+<p>{$row['status']} </p>
+<div>
+    <span class=\"badge\">{$row['created']}</span>
+    <div class=\"center\">
+        <button type=\"button\" class=\"btn btn-default btn-sm\">
+            <span class=\"glyphicon glyphicon-thumbs-up\"></span> Like
+        </button>
+	</div>
+	<div class=\"pull-right\">
+        <span class=\"label label-default\">category</span>
+        <span class=\"label label-primary\">category</span>
+        <span class=\"label label-success\">category</span>
+        <span class=\"label label-info\">category</span>
+        <span class=\"label label-warning\">category</span>
+        <span class=\"label label-danger\">category</span>
+    </div>
+</div>
+<hr />";
         }
     }
 }
