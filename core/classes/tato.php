@@ -22,13 +22,14 @@ class Tato {
     }
 
     public function showTatoes() {
-        $sel_data = $this->pdo->prepare("SELECT * FROM tatos ORDER BY created DESC");
+        $sel_data = $this->pdo->prepare("SELECT user_id,status,created FROM tatos ORDER BY created DESC");
         $sel_data->execute();
         $result = $sel_data->fetchAll();
 
         foreach ($result as $row) {
             $uname = $this->getUnameFromUid($row['user_id']);
-            echo "<p>$uname:</p>
+            echo "
+<p>$uname:</p>
 <p>{$row['status']} </p>
 <div>
     <span class=\"badge\">{$row['created']}</span>
