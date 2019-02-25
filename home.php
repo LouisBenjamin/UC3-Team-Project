@@ -16,10 +16,17 @@ if(isset($_POST['tato'])) {
 
     if (strlen($text) > 140){
         $error = "Length exceeds 140 characters. ";
+
     }
     else{
         $getTato->postTato($user_id,$text);
     }
+
+    }
+    else{
+        $getTato->postTato($user_id,$text);
+    }
+
 }
 
 ?>
@@ -34,11 +41,16 @@ if(isset($_POST['tato'])) {
     </head>
     <body>
 
+
         <nav class="navbar navbar-inverse">
+
+        <nav class="navbar navbar-default">
+
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Tato</a>
                 </div>
+
 
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -88,6 +100,20 @@ if(isset($_POST['tato'])) {
 
             <div class="col-md-12">
 	            <h4 style='text-align: left'>Leave a Tato</h4>
+
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active" id="post-new"><a href="index.php">Posts</a></li>
+                        <li><a href="#" id="post-list">About</a></li>
+                        <li><a href="admin" id="categories-editor">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="col-md-12">
+	            <h4>Leave a Tato</h4>
+
                 <form role="form" method="post">
                     <div class="form-group">
                         <textarea class="form-control" name="tatoText" rows="3" required></textarea>
@@ -97,6 +123,7 @@ if(isset($_POST['tato'])) {
                         } 
                         ?>
                     </div>
+
                    <div style='text-align: left'> <button type="submit" name="tato" class="btn btn-success">Submit</button> </div>
                 </form>
                    <div style='text-align: left'> <?php $getTato->showTatoes(); ?> </div>
@@ -107,7 +134,12 @@ if(isset($_POST['tato'])) {
   </div>
 </div>
 
-     
+
+                    <button type="submit" name="tato" class="btn btn-success">Submit</button>
+                </form>
+                <?php $getTato->showTatoes(); ?>
+            </div>
+        </div>
 
         <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
