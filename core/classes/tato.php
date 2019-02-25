@@ -29,7 +29,7 @@ class Tato {
         foreach ($result as $row) {
             $uname = $this->getUnameFromUid($row['user_id']);
             echo "
-<p>$uname:</p>
+<p><a href=\"profile.php?id={$row['user_id']}\" class=\"uname\">$uname</a>:</p>
 <p>{$row['status']} </p>
 <div>
     <span class=\"badge\">{$row['created']}</span>
