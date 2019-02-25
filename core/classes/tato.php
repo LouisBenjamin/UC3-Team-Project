@@ -15,10 +15,10 @@ class Tato {
         ));
     }
 
-    function getUserFromId($uid){
+    function getUnameFromUid($uid){
         $sel_user = $this->pdo->prepare("SELECT username FROM users WHERE user_id = ? limit 1");
         $sel_user->execute(array($uid));
-        return $sel_user->fetch(PDO::FETCH_OBJ);
+        return $sel_user->fetch(PDO::FETCH_OBJ)->username;
     }
 
     public function showTatoes() {
@@ -27,23 +27,26 @@ class Tato {
         $result = $sel_data->fetchAll();
 
         foreach ($result as $row) {
-            $user_data = $this->getUserFromId($row['user_id']);
-            echo '<p>' . $user_data->username .':'. '</p><p>' . $row['status'] . '</p><div><span class="badge">' . $row['created'].'</span>
-            <div class="center">
-                <button type="button" class="btn btn-default btn-sm">
-                	<span class="glyphicon glyphicon-thumbs-up"></span> Like
-              	</button>
-		    </div>
-		    <div class="pull-right">
-                        <span class="label label-default">category</span>
-                        <span class="label label-primary">category</span>
-                        <span class="label label-success">category</span>
-                        <span class="label label-info">category</span>
-                        <span class="label label-warning">category</span>
-                        <span class="label label-danger">category</span>
-                    </div>
-		</div>
-                <hr>';
+            $uname = $this->getUnameFromUid($row['user_id']);
+            echo "<p>$uname:</p>
+<p>{$row['status']} </p>
+<div>
+    <span class=\"badge\">{$row['created']}</span>
+    <div class=\"center\">
+        <button type=\"button\" class=\"btn btn-default btn-sm\">
+            <span class=\"glyphicon glyphicon-thumbs-up\"></span> Like
+        </button>
+	</div>
+	<div class=\"pull-right\">
+        <span class=\"label label-default\">category</span>
+        <span class=\"label label-primary\">category</span>
+        <span class=\"label label-success\">category</span>
+        <span class=\"label label-info\">category</span>
+        <span class=\"label label-warning\">category</span>
+        <span class=\"label label-danger\">category</span>
+    </div>
+</div>
+<hr />";
         }
     }
 }
