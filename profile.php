@@ -1,5 +1,12 @@
 <?php 
- 
+ include  'core/init.php';
+
+ if(isset($_POST["insert"]))
+ { 
+    $user_id = $_SESSION['user_id'];
+ 	$file=addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+ 	$getUser->upload($file,$user_id);
+ }
 
 ?>
 
@@ -52,12 +59,15 @@
                       <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
                         <br> 
                        <center><img alt="User" src="assets/images/profilepic.png" id="profile-image1" class="img-circle" style="width: 70%; "> </center>
-                     
+                       <form  method="post" enctype="multipart/form-data">
+                       <input type="file" name="image" id="image" />
+                       <input type="submit" value="Insert" name="insert" id="insert" />
+                    </form>
                  
                       </div>
                       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
                           <div class="container" >
-                            <h2>Name         <button type="submit" name="follow" class="btn btn-default" style= "margin-left: 570px">Edit</button> </h2>
+                            <h2>Name  <button type="submit" name="follow" class="btn btn-default" style= "margin-left: 570px">Edit</button> </h2>
                             <p> <b> Bio</b></p>
 
     
@@ -79,4 +89,23 @@
 </body>
 
 </html>
+
+<script>
+	$(document).ready(function(){
+		$('insert').click(function(){
+			var image_name=$('#image').val();
+			if(image_name==''){
+				alert("please select image");
+				return false;
+			}else{
+				var extension=$('#image').val().split('.').pop().toLowerCase();
+				if(jQuery.inArray(extension,['gif','png','jpg','jpeg'])==-1){
+					alert('Invalid Image File');
+					$('#image').val('');
+					return false
+				}
+			}
+		});
+	});
+</script>
 

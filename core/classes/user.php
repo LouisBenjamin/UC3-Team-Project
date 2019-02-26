@@ -23,6 +23,8 @@ class User{
             return false;
         }
     }
+ 
+
     public function emailCheck($email)
     {
         $stmt = $this->pdo->prepare("SELECT email FROM users WHERE email=:email");
@@ -49,5 +51,18 @@ class User{
         $stmt->execute([$uid]);
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
+
+    public function upload($file,$user_id){
+        $stmt = $this->pdo->prepare("UPDATE users SET profile_image =:file where user_id=:user");
+        $stmt->bindParam(":file", $file);
+        $stmt->bindParam(":user", $user_id);
+        try{
+            $stmt->execute();
+        }catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        
+    }
+
 }
 ?>
