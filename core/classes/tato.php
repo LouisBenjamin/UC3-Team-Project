@@ -1,10 +1,14 @@
 <?php
-class Tato {
+
+class Tato
+{
     protected $pdo;
+
     function __construct($pdo) {
         $this->pdo = $pdo;
     }
-    public function postTato($uid,$text) {
+
+    public function postTato($uid, $text) {
         $ins_db = $this->pdo->prepare('INSERT INTO tatos (user_id,status,created) VALUES (:uid,:text,:created)');
         $ins_db->execute(array(
             ':uid' => $uid,
@@ -12,11 +16,13 @@ class Tato {
             ':created' => date("Y-m-d H:i:s", time()),
         ));
     }
-    function getUserFromId($uid){
+
+    function getUserFromId($uid) {
         $sel_user = $this->pdo->prepare('SELECT username,user_id,fan_count FROM users WHERE user_id = ? LIMIT 1');
         $sel_user->execute(array($uid));
         return $sel_user->fetch(PDO::FETCH_OBJ);
     }
+
     public function showTatoes() {
         // Select all info from tatos table
         $sel_data = $this->pdo->prepare('SELECT user_id,status,created,tato_id,likes_count FROM tatos ORDER BY created DESC LIMIT 10');
@@ -66,4 +72,5 @@ class Tato {
         }
     }
 }
+
 ?>
