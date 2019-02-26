@@ -19,6 +19,7 @@ class Tato {
     }
     public function showTatoes() {
         $sel_data = $this->pdo->prepare("SELECT user_id,status,created FROM tatos ORDER BY created DESC LIMIT 10");
+
         $sel_data->execute();
         $result = $sel_data->fetchAll();
         foreach ($result as $row) {
