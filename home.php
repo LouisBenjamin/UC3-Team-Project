@@ -5,32 +5,46 @@
 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $user_id = $_SESSION['user_id'];
-
-    //$loggedInUser = "NULL";
+    
     if(isset($_SESSION['user_id'])) {
         $loggedInUser = $_SESSION['user_id'];
     }
 
-    if(isset($_POST['tatoText'])) {
-        $text = htmlspecialchars($_POST['tatoText']);
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        if (strlen($text) > 140){
-            $error = "Length exceeds 140 characters. ";
-        }
-        else{
-            $getTato->postTato($user_id,$text);
+        if (isset($_POST['liked_tato_id'])) {
+            $tato_id = $_POST['liked_tato_id'];
+
+            // Prepare update statement
+            $query = 'UPDATE tatos 
+                            SET likes_count = 
+                            CASE WHEN likes_count IS NOT NULL 
+                            THEN likes_count + 1 
+                            ELSE 1 
+                            END 
+                            WHERE tato_id=? LIMIT 1';
+            $stmt = $pdo->prepare($query);
+            $stmt->execute(array($tato_id));
+
+        } else {
+            $text = htmlspecialchars($_POST['tato_status']);
+            if (strlen($text) > 140) {
+                $error = "Length exceeds 140 characters. ";
+            } else {
+                $getTato->postTato($user_id, $text);
+
+            }
         }
     }
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
     <head>
         <meta charset="UTF-8">
         <title>Tato</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/main.css">
+<!--        <link rel="stylesheet" href="css/main.css">-->
     </head>
     <body>
 
@@ -90,14 +104,14 @@
 	            <h4 style='text-align: left'>Leave a Tato</h4>
                 <form role="form" method="post">
                     <div class="form-group">
-                        <textarea class="form-control" name="tatoText" rows="3" required></textarea>
+                        <textarea class="form-control" name="tato_status" rows="3" required></textarea>
                         <?php
-                        if(isset($error)){
-                            echo '<div class="span-fp-error">'.$error.'</div>';
-                        } 
+                            if(isset($error)){
+                                echo '<div class="span-fp-error">'.$error.'</div>';
+                            }
                         ?>
                     </div>
-                   <div style='text-align: left'> <button type="submit" name="tato" class="btn btn-success">Submit</button> </div>
+                   <div style='text-align: left'> <button type="submit" name="tato_submit" class="btn btn-success">Submit</button> </div>
                 </form>
                    <div style='text-align: left'> <?php $getTato->showTatoes(); ?> </div>
             </div>
