@@ -1,6 +1,4 @@
 <?php 
- 
-
 ?>
 
 
@@ -70,8 +68,25 @@
                     
                           </ul>
                           <hr>
+                        
+                          <form>
+                          <?php
+                          $user_id = "true";
+                          $isFollowing = False;
+                          if ($user_id = "true") {
+                            if($isFollowing == true){
+                              echo '<div class="col-sm-5 col-xs-6 tital " ><button type="submit" name="unfollow" class="btn btn-success">unfollow</button> </div>';
+                            }                      
+                            else {
+                              echo '<div class="col-sm-5 col-xs-6 tital " ><button type="submit" name="follow" class="btn btn-success">Follow</button> </div>'; 
+                            }
+                          }
+                          ?>
+                          </form>
 
-                          <div class="col-sm-5 col-xs-6 tital " ><button type="submit" name="follow" class="btn btn-success">Follow</button> </div>
+
+                        
+
                       </div>
                 </div>
             </div>

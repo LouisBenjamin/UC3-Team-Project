@@ -35,6 +35,7 @@ class User{
             return false;
         }
     }
+
     public function register($email,$name,$password){
         echo $email;
         $stmt = $this->pdo->prepare("INSERT INTO users (username,email,psw) VALUES (:name, :email, :password)");
