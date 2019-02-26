@@ -50,10 +50,10 @@ class Tato {
     </script>
     <span class=\"badge\">{$row['created']}</span>
     <div class=\"center\">
-        <button type=\"button\" class=\"btn btn-default btn-sm\" onclick=\"updatelike({$row['tato_id']});\">
+        <button type=\"button\" class=\"btn btn-default btn-sm\" onclick=\"updatelike({$row['tato_id']})\">
             <span class=\"glyphicon glyphicon-thumbs-up\"></span> Like
             <!-- To display the number of likes for a tato fetched from table -->
-            <span class='tatolikecount'> </span> {$row['likes_count']}
+            <span class=\"tatolikecount\"> {$row['likes_count']} </span>
         </button>
         
 	</div>
