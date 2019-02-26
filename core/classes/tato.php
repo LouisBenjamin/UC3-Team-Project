@@ -13,7 +13,7 @@ class Tato {
         ));
     }
     function getUserFromId($uid){
-        $sel_user = $this->pdo->prepare("SELECT username FROM users WHERE user_id = ? LIMIT 1");
+        $sel_user = $this->pdo->prepare("SELECT username,user_id,fan_count FROM users WHERE user_id = ? LIMIT 1");
         $sel_user->execute(array($uid));
         return $sel_user->fetch(PDO::FETCH_OBJ);
     }

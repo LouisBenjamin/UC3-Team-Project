@@ -1,26 +1,26 @@
 <?php
 
-include  'core/init.php';
-date_default_timezone_set("EST");
+    include  'core/init.php';
+    date_default_timezone_set("EST");
 
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$user_id = $_SESSION['user_id'];
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $user_id = $_SESSION['user_id'];
 
-//$loggedInUser = "NULL";
-if(isset($_SESSION['user_id'])) {
-    $loggedInUser = $_SESSION['user_id'];
-}
-
-if(isset($_POST['tato'])) {
-    $text = htmlspecialchars($_POST['tatoText']);
-
-    if (strlen($text) > 140){
-        $error = "Length exceeds 140 characters. ";
+    //$loggedInUser = "NULL";
+    if(isset($_SESSION['user_id'])) {
+        $loggedInUser = $_SESSION['user_id'];
     }
-    else{
-        $getTato->postTato($user_id,$text);
+
+    if(isset($_POST['tato'])) {
+        $text = htmlspecialchars($_POST['tatoText']);
+
+        if (strlen($text) > 140){
+            $error = "Length exceeds 140 characters. ";
+        }
+        else{
+            $getTato->postTato($user_id,$text);
+        }
     }
-}
 
 ?>
 
