@@ -1,25 +1,27 @@
 <?php
 
 // Connection parameters
-$dsn  = "mysql:host=35.203.99.197;dbname=tato";
-$user =	"test";
-$pass =	"tatouc3";
+$dsn  = 'mysql:host=35.203.99.197;dbname=tato';
+$user =	'test';
+$pass =	'tatouc3';
 
 try{
     // Connect to DB
     $pdo = new PDO($dsn, $user, $pass);
     // Get value sent by AJAX
-    $tato_id = $_POST["val"];
-    $data = [
-        'tato_id' => $tato_id,
-    ];
-    
+    $tato_id = $_POST['val'];
+
     $pdo->beginTransaction();
-    
-    // PRepare update statement
-    $query = "UPDATE tatos SET likes_count = likes_count + 1 where tato_id=:tato_id";
+    // Prepare update statement
+    $query = 'UPDATE tatos 
+                SET likes_count = 
+                CASE WHEN likes_count IS NOT NULL 
+                THEN likes_count + 1 
+                ELSE 1 
+                END 
+                WHERE tato_id=? LIMIT 1';
     $stmt= $pdo->prepare($query);
-    $stmt->execute($data);
+    $stmt->execute(array($tato_id));
     $pdo->commit();
     $pdo=null;
     

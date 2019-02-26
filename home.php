@@ -11,7 +11,7 @@
         $loggedInUser = $_SESSION['user_id'];
     }
 
-    if(isset($_POST['tato'])) {
+    if(isset($_POST['tatoText'])) {
         $text = htmlspecialchars($_POST['tatoText']);
 
         if (strlen($text) > 140){
