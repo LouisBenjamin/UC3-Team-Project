@@ -117,6 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </form>
                     <div style="text-align: left"> <?php $getTato->showTatoes(); ?> </div>
+
                 </div>
             </div>
         </div>
