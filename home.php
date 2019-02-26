@@ -16,17 +16,10 @@ if(isset($_POST['tato'])) {
 
     if (strlen($text) > 140){
         $error = "Length exceeds 140 characters. ";
-
     }
     else{
         $getTato->postTato($user_id,$text);
     }
-
-    }
-    else{
-        $getTato->postTato($user_id,$text);
-    }
-
 }
 
 ?>
@@ -41,30 +34,25 @@ if(isset($_POST['tato'])) {
     </head>
     <body>
 
-
         <nav class="navbar navbar-inverse">
-
-        <nav class="navbar navbar-default">
-
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Tato</a>
                 </div>
 
-
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active" id="post-new"><a href="index.php">Home</a></li>
+                        <li class="active" id="post-new"><a href="home.php">Home</a></li>
 
                         <!-- redirect to -->
                         <li><a href="#" id="post-list">About</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                       <li><a  href="admin" id="categories-editor"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                       <li><a  href="profile.php" id="categories-editor"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
 
                        <!-- redirect to -->
-                       <li><a href="#">Logout</a></li>
+                       <li><a href="index.php">Logout</a></li>
                     </ul>
                 </div>
 
@@ -75,7 +63,7 @@ if(isset($_POST['tato'])) {
   <div class="row">
     <div class="col-sm-3 well">
       <div class="well">
-        <p><a href="#">My Profile</a></p>
+        <p><a href="profile.php" >My Profile</a></p>
         <img src="assets/images/profilepic.png" class="img-circle" height="65" width="65" alt="Avatar">
         <h5 style='text-align: left'><b> User Name: </b></h5>
         <h5 style='text-align: left'><b> User ID: </b></h5>
@@ -100,20 +88,6 @@ if(isset($_POST['tato'])) {
 
             <div class="col-md-12">
 	            <h4 style='text-align: left'>Leave a Tato</h4>
-
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active" id="post-new"><a href="index.php">Posts</a></li>
-                        <li><a href="#" id="post-list">About</a></li>
-                        <li><a href="admin" id="categories-editor">Admin</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="container">
-            <div class="col-md-12">
-	            <h4>Leave a Tato</h4>
-
                 <form role="form" method="post">
                     <div class="form-group">
                         <textarea class="form-control" name="tatoText" rows="3" required></textarea>
@@ -123,7 +97,6 @@ if(isset($_POST['tato'])) {
                         } 
                         ?>
                     </div>
-
                    <div style='text-align: left'> <button type="submit" name="tato" class="btn btn-success">Submit</button> </div>
                 </form>
                    <div style='text-align: left'> <?php $getTato->showTatoes(); ?> </div>
@@ -134,12 +107,7 @@ if(isset($_POST['tato'])) {
   </div>
 </div>
 
-
-                    <button type="submit" name="tato" class="btn btn-success">Submit</button>
-                </form>
-                <?php $getTato->showTatoes(); ?>
-            </div>
-        </div>
+     
 
         <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
