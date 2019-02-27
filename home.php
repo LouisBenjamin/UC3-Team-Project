@@ -44,6 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Tato</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!--        <link rel="stylesheet" href="css/main.css">-->
+    <style>
+        .well p {
+            text-align: left;
+        }
+
+        .well img {
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
 
@@ -76,12 +85,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="container text-center">
     <div class="row">
         <div class="col-sm-3 well">
-            <div class="well">
-                <p><a href="profile.php">My Profile</a></p>
+            <div class="well" style="margin-bottom: 0">
+                <h5><a href="profile.php">My Profile</a></h5>
                 <img src="assets/images/profilepic.png" class="img-circle" height="65" width="65" alt="Avatar">
-                <p style="text-align: left"><b> User Name: <?php echo $user_data->username;?></b></p>
-                <p style="text-align: left"><b> User ID: <?php echo $user_data->user_id;?></b></p>
-                <p style="text-align: left"><b> Followers: <?php echo $user_data->fan_count;?></b></p>
+                <p><b> User Name: <?php echo $user_data->username;?></b></p>
+                <p><b> User ID: <?php echo $user_data->user_id;?></b></p>
+                <p><b> Followers: <?php echo $user_data->fan_count;?></b></p>
             </div>
 <!--            <div class="well">-->
 <!--                <p><a href="#">Interests</a></p>-->
