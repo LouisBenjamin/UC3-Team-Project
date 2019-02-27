@@ -50,5 +50,30 @@ class User{
       return $sel_user->fetch(PDO::FETCH_OBJ);
     }
 
+     public function upload($file,$user_id){
+        $stmt = $this->pdo->prepare("UPDATE users SET profile_image =:file where user_id=:user");
+        $stmt->bindParam(":file", $file);
+        $stmt->bindParam(":user", $user_id);
+        try{
+            $stmt->execute();
+        }catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        
+    }
+
+      public function image_retrieve($user_id)
+    {
+
+    
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE user_id=:user");
+        $stmt->bindParam(":user", $user_id);
+        $stmt->execute();
+
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        
+    }
+
 }
 ?>
