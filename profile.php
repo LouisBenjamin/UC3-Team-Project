@@ -58,7 +58,12 @@
                        <div class="panel-body">
                       <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
                         <br> 
-                       <center><img alt="User" src="assets/images/profilepic.png" id="profile-image1" class="img-circle" style="width: 70%; "> </center>
+                        <?php
+                         $user_id = $_SESSION['user_id'];
+                       $userimage=$getUser->image_retrieve($user_id);
+                      echo' <center> <img src="data:image/jpeg;base64,'.base64_encode($userimage['profile_image']).'"/> </center>';
+            
+                       ?>
                        <form  method="post" enctype="multipart/form-data">
                        <input type="file" name="image" id="image" />
                        <input type="submit" value="Insert" name="insert" id="insert" />

@@ -64,5 +64,18 @@ class User{
         
     }
 
+      public function image_retrieve($user_id)
+    {
+
+    
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE user_id=:user");
+        $stmt->bindParam(":user", $user_id);
+        $stmt->execute();
+
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        
+    }
+
 }
 ?>
