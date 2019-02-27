@@ -1,5 +1,15 @@
-<?php
+<?php 
+ include  'core/init.php';
 
+$user_id = $_SESSION['user_id'];
+   
+ if(isset($_POST["insert"]))
+ { 
+    $user_id = $_SESSION['user_id'];
+    $image = file_get_contents(addslashes($_FILES["image"]["tmp_name"]));
+    $file=base64_encode($image);
+    $getUser->upload($file,$user_id);
+ }
 
 ?>
 
@@ -51,10 +61,15 @@
             <div class="panel-body">
                 <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
                     <br>
-                    <img class="img-circle" id="profile-image1" alt="User" src="assets/images/profilepic.png"
-                         style="width: 70%; text-align: center">
-
-
+                    <?php
+                         $user_id = $_SESSION['user_id'];
+                       $userimage=$getUser->image_retrieve($user_id);
+                      echo' <center> <img src="data:image/jpeg;base64,'.($userimage['profile_image']).'" height="100" width="100"/> </center>';
+            
+                       ?>
+                       <form  method="post" enctype="multipart/form-data">
+                       <input type="file" name="image" id="image" />
+                       <input type="submit" value="Insert" name="insert" id="insert" />
                 </div>
                 <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                     <div class="container">
@@ -86,4 +101,3 @@
 </body>
 
 </html>
-
