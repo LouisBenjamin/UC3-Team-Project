@@ -4,10 +4,9 @@ include 'core/init.php';
 date_default_timezone_set("EST");
 
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$user_id = $_SESSION['user_id'];
 
 if (isset($_SESSION['user_id'])) {
-    $loggedInUser = $_SESSION['user_id'];
+    $user_data = User::getUserFromId($pdo,$_SESSION['user_id']);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -17,12 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Prepare update statement
         $query = 'UPDATE tatos 
-                            SET likes_count = 
-                            CASE WHEN likes_count IS NOT NULL 
-                            THEN likes_count + 1 
-                            ELSE 1 
-                            END 
-                            WHERE tato_id=? LIMIT 1';
+                SET likes_count = 
+                CASE WHEN likes_count IS NOT NULL 
+                THEN likes_count + 1 
+                ELSE 1 
+                END 
+                WHERE tato_id=? LIMIT 1';
         $stmt = $pdo->prepare($query);
         $stmt->execute(array($tato_id));
 
@@ -31,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (strlen($text) > 140) {
             $error = "Length exceeds 140 characters. ";
         } else {
-            $getTato->postTato($user_id, $text);
+            $getTato->postTato($user_data->user_id, $text);
 
         }
     }
@@ -80,22 +79,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="well">
                 <p><a href="profile.php">My Profile</a></p>
                 <img src="assets/images/profilepic.png" class="img-circle" height="65" width="65" alt="Avatar">
-                <h5 style="text-align: left"><b> User Name: </b></h5>
-                <h5 style="text-align: left"><b> User ID: </b></h5>
-                <h5 style="text-align: left"><b> Followers: </b></h5>
+                <p style="text-align: left"><b> User Name: <?php echo $user_data->username;?></b></p>
+                <p style="text-align: left"><b> User ID: <?php echo $user_data->user_id;?></b></p>
+                <p style="text-align: left"><b> Followers: <?php echo $user_data->fan_count;?></b></p>
             </div>
-
-            <div class="well">
-                <p><a href="#">Interests</a></p>
-                <p>
-                    <span class="label label-default">Category</span>
-                    <span class="label label-primary">Category</span>
-                    <span class="label label-success">Category</span>
-                    <span class="label label-info">Category</span>
-                    <span class="label label-warning">Category</span>
-                    <span class="label label-danger">Category</span>
-                </p>
-            </div>
+<!--            <div class="well">-->
+<!--                <p><a href="#">Interests</a></p>-->
+<!--                <p>-->
+<!--                    <span class="label label-default">Category</span>-->
+<!--                    <span class="label label-primary">Category</span>-->
+<!--                    <span class="label label-success">Category</span>-->
+<!--                    <span class="label label-info">Category</span>-->
+<!--                    <span class="label label-warning">Category</span>-->
+<!--                    <span class="label label-danger">Category</span>-->
+<!--                </p>-->
+<!--            </div>-->
         </div>
         <div class="col-sm-7">
 
