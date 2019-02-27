@@ -9,7 +9,7 @@ class User
   }
 
   public static function getUserFromId($pdo, $uid) {
-    $sel_user = $pdo->prepare('SELECT username,user_id,fan_count,profile_image FROM users WHERE user_id = ? LIMIT 1');
+    $sel_user = $pdo->prepare('SELECT * FROM users WHERE user_id = ? LIMIT 1');
     $sel_user->execute(array($uid));
     return $sel_user->fetch(PDO::FETCH_OBJ);
   }

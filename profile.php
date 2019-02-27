@@ -1,19 +1,19 @@
 <?php
 require('core/init.php');
 
-if($_SERVER['REQUEST_METHOD'] == 'GET') {
-
+if(isset($_GET['id'])) {
+  $user_data = User::getUserFromId($pdo, $_GET['id']);
 }
-
-else if (isset($_SESSION['user_id'])) {
+else if(isset($_SESSION['user_id'])) {
   $user_data = User::getUserFromId($pdo, $_SESSION['user_id']);
+
+  if (isset($_POST['image_submit'])) {
+    $image = file_get_contents(addslashes($_FILES["image"]["tmp_name"]));
+    $file = base64_encode($image);
+    $getUser->upload($file, $user_data->user_id);
+  }
 }
 
-if (isset($_POST['image_submit'])) {
-  $image = file_get_contents(addslashes($_FILES["image"]["tmp_name"]));
-  $file = base64_encode($image);
-  $getUser->upload($file, $user_data->user_id);
-}
 
 ?>
 
@@ -73,20 +73,19 @@ if (isset($_POST['image_submit'])) {
                 </div>
                 <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                     <div class="container">
-                        <h2>Name
+                        <h2><?php echo  $user_data->username; ?>
                             <button type="submit" name="follow" class="btn btn-default" style="margin-left: 570px">
                                 Edit
                             </button>
                         </h2>
-                        <p><b> Bio</b></p>
+                        <p><?php echo  $user_data->bio; ?></p>
 
 
                     </div>
                     <hr>
                     <ul class="container details">
-                        <li><p><span class="glyphicon glyphicon-user one" style="width:50px;"></span>UserID</p></li>
-                        <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>email</p></li>
-
+                        <li><p>ID: <?php echo  $user_data->user_id; ?></p></li>
+                        <li><p><?php echo  $user_data->email; ?></p></li>
                     </ul>
                     <hr>
 
