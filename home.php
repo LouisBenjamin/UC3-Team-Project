@@ -6,7 +6,7 @@ date_default_timezone_set("EST");
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_SESSION['user_id'])) {
-    $user_data = User::getUserFromId($pdo,$_SESSION['user_id']);
+  $user_data = User::getUserFromId($pdo,$_SESSION['user_id']);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

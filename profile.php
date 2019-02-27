@@ -1,28 +1,31 @@
-<?php 
- include  'core/init.php';
+<?php
+require('core/init.php');
 
-$user_id = $_SESSION['user_id'];
-   
- if(isset($_POST["insert"]))
- { 
-    $user_id = $_SESSION['user_id'];
-    $image = file_get_contents(addslashes($_FILES["image"]["tmp_name"]));
-    $file=base64_encode($image);
-    $getUser->upload($file,$user_id);
- }
+if($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+}
+
+else if (isset($_SESSION['user_id'])) {
+  $user_data = User::getUserFromId($pdo, $_SESSION['user_id']);
+}
+
+if (isset($_POST['image_submit'])) {
+  $image = file_get_contents(addslashes($_FILES["image"]["tmp_name"]));
+  $file = base64_encode($image);
+  $getUser->upload($file, $user_data->user_id);
+}
 
 ?>
 
 
 <!DOCTYPE html>
-
 <html lang="en-US">
 <head>
     <title> My profile</title>
     <meta charset="utf-8"/>
     <title>Tato</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<!--    <link rel="stylesheet" href="css/main.css">-->
+    <!--    <link rel="stylesheet" href="css/main.css">-->
 
 
 </head>
@@ -61,15 +64,12 @@ $user_id = $_SESSION['user_id'];
             <div class="panel-body">
                 <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
                     <br>
-                    <?php
-                         $user_id = $_SESSION['user_id'];
-                       $userimage=$getUser->image_retrieve($user_id);
-                      echo' <center> <img src="data:image/jpeg;base64,'.($userimage['profile_image']).'" height="100" width="100"/> </center>';
-            
-                       ?>
-                       <form  method="post" enctype="multipart/form-data">
-                       <input type="file" name="image" id="image" />
-                       <input type="submit" value="Insert" name="insert" id="insert" />
+                    <img src="data:image/jpeg;base64,<?php echo $user_data->profile_image; ?>" height="100"
+                         width="100" alt="Profile Photo"/>
+
+                    <form method="post" enctype="multipart/form-data">
+                        <input type="file" name="image" id="image"/>
+                        <input type="submit" value="Upload" name="image_submit" id="image-upload"/>
                 </div>
                 <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                     <div class="container">
