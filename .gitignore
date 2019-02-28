@@ -1,1 +1,4 @@
 *.cmd
+*.cache
+/vendor
+composer.lock

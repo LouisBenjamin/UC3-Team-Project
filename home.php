@@ -6,7 +6,7 @@ date_default_timezone_set("EST");
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_SESSION['user_id'])) {
-    $user_data = User::getUserFromId($pdo,$_SESSION['user_id']);
+  $user_data = User::getUserFromId($pdo,$_SESSION['user_id']);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -44,6 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Tato</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!--        <link rel="stylesheet" href="css/main.css">-->
+    <style>
+        .well p {
+            text-align: left;
+        }
+
+        .well img {
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
 
@@ -76,12 +85,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="container text-center">
     <div class="row">
         <div class="col-sm-3 well">
-            <div class="well">
-                <p><a href="profile.php">My Profile</a></p>
-                <img src="assets/images/profilepic.png" class="img-circle" height="65" width="65" alt="Avatar">
-                <p style="text-align: left"><b> User Name: <?php echo $user_data->username;?></b></p>
-                <p style="text-align: left"><b> User ID: <?php echo $user_data->user_id;?></b></p>
-                <p style="text-align: left"><b> Followers: <?php echo $user_data->fan_count;?></b></p>
+            <div class="well" style="margin-bottom: 0">
+                <h5><a href="profile.php">My Profile</a></h5>
+                <img src="data:image/jpeg;base64,<?php echo $user_data->profile_image; ?>" class="img-circle" height="65" width="65" alt="Avatar">
+                <p><b> User Name: <?php echo $user_data->username;?></b></p>
+                <p><b> User ID: <?php echo $user_data->user_id;?></b></p>
+                <p><b> Followers: <?php echo $user_data->fan_count;?></b></p>
             </div>
 <!--            <div class="well">-->
 <!--                <p><a href="#">Interests</a></p>-->
