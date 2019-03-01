@@ -78,7 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="col-sm-3 well">
             <div class="well">
                 <p><a href="profile.php">My Profile</a></p>
-                <img src="assets/images/profilepic.png" class="img-circle" height="65" width="65" alt="Avatar">
+                <img src="data:image/jpeg;base64,<?php echo $user_data->profile_image; ?>" height="100"
+                         width="100" alt="Profile Photo"/>
                 <p style="text-align: left"><b> User Name: <?php echo $user_data->username;?></b></p>
                 <p style="text-align: left"><b> User ID: <?php echo $user_data->user_id;?></b></p>
                 <p style="text-align: left"><b> Followers: <?php echo $user_data->fan_count;?></b></p>
