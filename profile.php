@@ -8,7 +8,7 @@ else if(isset($_SESSION['user_id'])) {
   $user_data = User::getUserFromId($pdo, $_SESSION['user_id']);
 
   if (isset($_POST['image_submit'])) {
-    $image = file_get_contents(addslashes($_FILES["image"]["tmp_name"]));
+    $image = file_get_contents(addslashes($_FILES['image']['tmp_name']));
     $file = base64_encode($image);
     $getUser->upload($file, $user_data->user_id);
   }
