@@ -1,6 +1,6 @@
 <?php
 
-require_once('core\init.php');
+require_once __DIR__.'/../core/init.php';
 /**
  * @param $email string email of logging in user
  * @param $password string password of logging in user

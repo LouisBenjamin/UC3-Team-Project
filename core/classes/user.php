@@ -20,8 +20,6 @@ class User
     return $stmt->fetch(PDO::FETCH_OBJ);
   }
 
-
-
   public function emailCheck($email) {
     $stmt = $this->pdo->prepare('SELECT email FROM users WHERE email=:email');
     $stmt->bindParam(":email", $email);
