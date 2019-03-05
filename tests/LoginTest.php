@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-
+require_once __DIR__ . '\..\includes\login.php';
 class LoginTest extends TestCase
 {
   /**
@@ -10,6 +10,9 @@ class LoginTest extends TestCase
    */
   public function testLogin()
   {
-    $this->assertTrue(true);
+    // False using combination not in database
+    $this->assertFalse(login("a@b.com","abc"));
+
+    //
   }
 }

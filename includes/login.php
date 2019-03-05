@@ -1,14 +1,15 @@
 <?php
 
-  /**
+require_once ('core\init.php');
+/**
    * @param $email string email of logging in user
    * @param $password string password of logging in user
-   * @param $pdo PDO handle to access database
    * @return bool if failed then return false
    */
 
   function login($email, $password) {
-    global $pdo;
+    /** @var PDO $pdo */
+    $pdo = Dbh::getInstance()->dbh;
     $stmt = $pdo->prepare('SELECT user_id FROM users WHERE email=:email AND psw=:password LIMIT 1');
     $stmt->bindParam(":email", $email);
     $stmt->bindParam(":password", $password);
