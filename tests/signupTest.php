@@ -3,11 +3,12 @@ use PHPUnit\Framework\TestCase;
 require_once __DIR__ . '\..\includes\signup.php';
 
 
+
 class SignUpTest extends TestCase
 {
   public function testSignupName()
   {
-    // False mame combination
+    // False name combination
     $this->assertFalse(signUpName('steve@'));
 
     // True name combination

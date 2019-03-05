@@ -34,7 +34,6 @@ function signUpPassword($password) : bool {
        }
 }
 
-
 if(isset($_POST['signup'])){
 	$name    = $_POST['uname'];
 	$email    = $_POST['email'];
