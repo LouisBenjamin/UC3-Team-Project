@@ -2,13 +2,13 @@
 require('core/init.php');
 
 if(isset($_GET['id'])) {
-  $user_data = User::getUserFromId($pdo, $_GET['id']);
+  $user_data = User::getUserFromId($_GET['id'], $pdo);
 }
 else if(isset($_SESSION['user_id'])) {
-  $user_data = User::getUserFromId($pdo, $_SESSION['user_id']);
+  $user_data = User::getUserFromId($_SESSION['user_id'], $pdo);
 
   if (isset($_POST['image_submit'])) {
-    $image = file_get_contents(addslashes($_FILES["image"]["tmp_name"]));
+    $image = file_get_contents(addslashes($_FILES['image']['tmp_name']));
     $file = base64_encode($image);
     $getUser->upload($file, $user_data->user_id);
   }

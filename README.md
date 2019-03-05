@@ -1,6 +1,6 @@
 ﻿
 
-# SOEN 341 - Team UC3
+# SOEN 341 - Team UC3 [![Build Status](https://travis-ci.com/LouisBenjamin/UC3-Team-Project.svg?branch=master)](https://travis-ci.com/LouisBenjamin/UC3-Team-Project)
 
 ## Objective
 
