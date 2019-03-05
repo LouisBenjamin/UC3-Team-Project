@@ -6,7 +6,7 @@ require_once __DIR__ . '/../includes/signup.php';
 
 class SignUpTest extends TestCase
 {
-  public function testSignupName()
+  public function testSignup()
   {
     // False name combination
     $this->assertFalse(signUpName('steve@'));
@@ -14,22 +14,11 @@ class SignUpTest extends TestCase
     // True name combination
     $this->assertTrue(signUpName('steve rogers'));
 
-   
-  }
-
-
-  public function testSignupEmail()
-  {
   	// False email combination
     $this->assertFalse(signUpEmail('steve@@#'));
 
     // True email combination
     $this->assertTrue(signUpEmail('steve@gmail.com'));
-
-  }
-
-  public function testSignupPassword()
-  {
 
    // False password combination
     $this->assertFalse(signUpPassword('ste'));
