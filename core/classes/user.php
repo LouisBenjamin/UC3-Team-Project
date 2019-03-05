@@ -9,14 +9,23 @@ class User
     $this->pdo = $pdo;
   }
 
-  /** @var $pdo PDO */
-  public static function getUserFromId($pdo, $uid) {
+  /**
+   * @param $uid int user_id to identify user whom id is needed
+   * @param $pdo PDO
+   * @return mixed row corresponding to $uid
+   */
+  public static function getUserFromId($uid, $pdo) {
     $stmt = $pdo->prepare('SELECT * FROM users WHERE user_id = ? LIMIT 1');
     $stmt->execute(array($uid));
     return $stmt->fetch(PDO::FETCH_OBJ);
   }
 
-  /** @var $pdo PDO */
+  /**
+   * @param $email string email of logging in user
+   * @param $password string password of logging in user
+   * @param $pdo PDO handle to access database
+   * @return bool if failed then return false
+   */
   public static function login($email, $password, $pdo) {
     $stmt = $pdo->prepare('SELECT user_id FROM users WHERE email=:email AND psw=:password LIMIT 1');
     $stmt->bindParam(":email", $email);

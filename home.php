@@ -6,7 +6,7 @@ date_default_timezone_set('EST');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_SESSION['user_id'])) {
-  $user_data = User::getUserFromId($pdo, $_SESSION['user_id']);
+  $user_data = User::getUserFromId($_SESSION['user_id'], $pdo);
 } else {
   header("refresh: 1; url=index.php");
   echo "You are not logged in...redirecting to login page. ";

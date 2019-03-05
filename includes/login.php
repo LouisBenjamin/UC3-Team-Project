@@ -15,7 +15,7 @@ if (isset($_POST['email']) && isset($_POST['pwd'])) {
         <ul>
             <li>
               <?php
-              if (isset($_POST["email"])) {
+              if (isset($_POST['email'])) {
                 echo '<input type="text" name="email" value="' . htmlspecialchars($_POST['email']) . '" />';
               } else {
                 echo '<input type="text" name="email" value="" placeholder="Please enter your Email here">';
