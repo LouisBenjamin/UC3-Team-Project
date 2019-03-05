@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-require_once __DIR__ . '\..\includes\signup.php';
+require_once __DIR__ . '/../includes/signup.php';
 
 
 
