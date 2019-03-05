@@ -6,19 +6,19 @@ if(isset($_POST['signup'])){
 	$password = $_POST['psw'];
 
 	if(empty($email) or empty($password) or empty($name)){
-      $error="All fields are mandatory";
+      $sign_up_error="All fields are mandatory";
   }
   else{
   	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-       	$error="Invalid email format";
+       	$sign_up_error="Invalid email format";
        }else if(strlen($name)  < 7 && ctype_alpha($name)){
-	$error="Invalid name format";
+	$sign_up_error="Invalid name format";
        }else if(strlen($password) < 7){ 
-         $error="Password is too short";
+         $sign_up_error="Password is too short";
        }else
        {
        	if($getUser->emailCheck($email)==true){
-       		 $error="Email already exist";
+       		 $sign_up_error="Email already exist";
        	}else{
    $getUser->register($email, $name ,$password);
     header('Location: home.php');
@@ -52,8 +52,8 @@ if(isset($_POST['signup'])){
   </ul>
  </div>
    <?php
-    if(isset($error)){
-      echo '<div class="span-fp-error">'.$error.'</div>';
+    if(isset($sign_up_error)){
+      echo '<div class="span-fp-error">'.$sign_up_error.'</div>';
     } 
     ?>
 </form>

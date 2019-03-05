@@ -26,7 +26,7 @@ class Tato
     $sel_data->execute();
     $result = $sel_data->fetchAll();
     foreach ($result as $row) {
-      $user_data = User::getUserFromId($row['user_id'], $this->pdo);
+      $user_data = User::getUserFromId($row['user_id']);
       echo "
                 <p><a href=\"profile.php?id={$row['user_id']}\" class=\"username\">{$user_data->username}</a>:</p>
                 <p>{$row['status']} </p>

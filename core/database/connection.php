@@ -1,6 +1,7 @@
 <?php
 class Dbh
 {
+    /** @var PDO  */
   public $dbh; // handle of the db connexion
   private static $instance;
 

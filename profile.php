@@ -2,10 +2,10 @@
 require('core/init.php');
 
 if(isset($_GET['id'])) {
-  $user_data = User::getUserFromId($_GET['id'], $pdo);
+  $user_data = User::getUserFromId($_GET['id']);
 }
 else if(isset($_SESSION['user_id'])) {
-  $user_data = User::getUserFromId($_SESSION['user_id'], $pdo);
+  $user_data = User::getUserFromId($_SESSION['user_id']);
 
   if (isset($_POST['image_submit'])) {
     $image = file_get_contents(addslashes($_FILES['image']['tmp_name']));
