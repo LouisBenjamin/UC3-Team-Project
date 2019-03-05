@@ -5,10 +5,10 @@ class SampleTest extends TestCase
 {
   /**
    * A basic test example.
-   * Src: https://github.com/n2chao/SOEN341/blob/master/app/tests/Unit/ExampleTest.php
+   * Src: Laravel
    * @return void
    */
-  public function testBasicTest()
+  public function testExample()
   {
     $this->assertTrue(true);
   }
