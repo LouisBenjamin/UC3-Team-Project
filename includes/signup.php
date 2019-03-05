@@ -1,5 +1,40 @@
 <?php
 
+
+require_once('core\init.php');
+/**
+ * @param $email string email of logging in user
+ * @param $password string password of logging in user
+ * @return bool success then true, fail then false
+ */
+function signUpName($name) : bool {
+   
+   if(strlen($name)  < 7 && ctype_alpha($name)){
+           return true;
+       }else { 
+           return false;
+       }
+}
+
+function signUpEmail($email) : bool {
+   
+   if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+           return true;
+       }else { 
+           return false;
+       }
+}
+
+function signUpPassword($password) : bool {
+   
+   if(strlen($password) < 7){ 
+         return false
+       }else{
+        return true
+       }
+}
+
+
 if(isset($_POST['signup'])){
 	$name    = $_POST['uname'];
 	$email    = $_POST['email'];
