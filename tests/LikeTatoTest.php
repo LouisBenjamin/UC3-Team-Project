@@ -9,8 +9,10 @@ class LikeTatoTest extends TestCase
     protected $client;
 
     protected function setUp() {
+        $host = $_SERVER['HTTP_HOST'];
+        $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
         $this->client = new GuzzleHttp\Client([
-            'base_uri' => 'http://localhost'
+            'base_uri' => "http://$host$uri"
         ]);
     }
 
