@@ -5,10 +5,10 @@
     ]
   },
   "require-dev": {
-    "phpunit/phpunit": "^7"
   },
   "require": {
     "ext-pdo": "*",
-    "guzzlehttp/guzzle": "^6.3"
+    "guzzlehttp/guzzle": "^6.3",
+    "phpunit/phpunit": "^7"
   }
 }
