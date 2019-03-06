@@ -10,7 +10,7 @@ class LikeTatoTest extends TestCase
 
     protected function setUp() {
         $this->client = new GuzzleHttp\Client([
-            'base_uri' => "http://127.0.0.1:8080"
+            'base_uri' => "http://127.0.0.1"
         ]);
     }
 
