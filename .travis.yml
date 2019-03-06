@@ -1,5 +1,7 @@
 language: php
 php:
   - 7.3.2
+install:
+  - composer require guzzlehttp/guzzle
 script:
   phpunit
