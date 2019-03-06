@@ -10,7 +10,8 @@ function login($email, $password) : bool {
   /** @var PDO $pdo */
   $pdo = Dbh::getInstance()->dbh;
   $stmt = $pdo->prepare('SELECT user_id FROM users WHERE email=:email AND psw=:password LIMIT 1');
-  $stmt->bindParam(":email", $email);
+  $stmt->bindParam(":email",
+      $email);
   $stmt->bindParam(":password", $password);
   try {
     $stmt->execute();
@@ -31,10 +32,10 @@ function login($email, $password) : bool {
 
 if (isset($_POST['email']) && isset($_POST['pwd'])) {
   if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-    $error = "Invalid format";
+    $login_error = "Invalid format";
   } else {
     if (login($_POST['email'], $_POST['pwd']) === false) {
-      $error = "The email or password is incorrect";
+      $login_error = "The email or password is incorrect";
     } else {
       // Per http://php.net/manual/en/function.header.php
       $host = $_SERVER['HTTP_HOST'];
@@ -66,8 +67,8 @@ if (isset($_POST['email']) && isset($_POST['pwd'])) {
             </li>
         </ul>
       <?php
-      if (isset($error)) {
-        echo '<div class="span-fp-error">' . $error . '</div>';
+      if (isset($login_error)) {
+        echo '<div class="span-fp-error">' . $login_error . '</div>';
       }
       ?>
     </form>

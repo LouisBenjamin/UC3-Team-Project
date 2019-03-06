@@ -1,4 +1,8 @@
 *.cmd
 *.cache
+
 /vendor
 composer.lock
+
+### PhpStorm ###
+.idea/

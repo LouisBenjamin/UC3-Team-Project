@@ -1,33 +1,18 @@
 <?php
 include 'core/init.php';
 date_default_timezone_set('EST');
+/** @var $pdo PDO */
+global $pdo;
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if (isset($_SESSION['user_id'])) {
-  $user_data = User::getUserFromId($_SESSION['user_id'], $pdo);
+  $user_data = User::getUserFromId($_SESSION['user_id']);
 } else {
   header("refresh: 1; url=index.php");
   echo "You are not logged in...redirecting to login page. ";
   exit;
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if (isset($_POST['liked_tato_id'])) {
-    $tato_id = $_POST['liked_tato_id'];
-    // Prepare update statement
-    $query = 'UPDATE tatos 
-                SET likes_count = 
-                CASE WHEN likes_count IS NOT NULL 
-                THEN likes_count + 1 
-                ELSE 1 
-                END 
-                WHERE tato_id=? LIMIT 1';
-    $stmt = $pdo->prepare($query);
-    $stmt->execute(array($tato_id));
-  }else if (isset($_POST['image_submit'])) {
-    $image = file_get_contents(addslashes($_FILES['image']['tmp_name']));
-    $file = base64_encode($image);
-    $getTato->uploadTato($file, $user_data->user_id);
-  } 
-  else  {
+    if (isset($_POST['tato_submit'])) {
     $text = htmlspecialchars($_POST['tato_status']);
     if (strlen($text) > 140) {
       $error = 'Length exceeds 140 characters. ';
@@ -36,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             margin: 20px 0;
         }
     </style>
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>
 </head>
 <body>
 
@@ -87,12 +74,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="row">
         <div class="col-sm-3 well">
             <div class="well" style="margin-bottom: 0">
-                <h5><a href="profile.php">My Profile</a></h5>
+                <h5><a href="profile.php"><?= $user_data->username; ?></a></h5>
                 <img src="data:image/jpeg;base64,<?php echo $user_data->profile_image; ?>" class="img-circle"
                      height="65" width="65" alt="Avatar">
-                <p><b> User Name: <?= $user_data->username; ?></b></p>
-                <p><b> User ID: <?= $user_data->user_id; ?></b></p>
                 <p><b> Followers: <?= $user_data->fan_count; ?></b></p>
+                <p><b> Following: <?= $user_data->idol_count; ?></b></p>
+
             </div>
             <!--            <div class="well">-->
             <!--                <p><a href="#">Interests</a></p>-->
@@ -125,10 +112,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <button type="submit" name="tato_submit" class="btn btn-success">Submit</button>
                         </div>
                     </form>
-                    <form method="post" enctype="multipart/form-data" style="text-align: left">
-                        <input type="file" name="image" id="image"/>
-                        <input type="submit" value="Upload" name="image_submit" id="image-upload"/>
-                    </form>
                     <div style="text-align: left"> <?php $getTato->showTatoes(); ?> </div>
 
                 </div>
@@ -138,8 +121,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </div>
 
-
-<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>
