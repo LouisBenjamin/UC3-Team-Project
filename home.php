@@ -103,6 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="row">
 
                 <div class="col-md-12">
+                    <div class="well" style="margin-bottom: 0">
                     <h4 style="text-align: left">Leave a Tato</h4>
                     <form role="form" method="post">
                         <div class="form-group">
@@ -121,6 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="file" name="image" id="image"/>
                         <input type="submit" value="Upload" name="image_submit" id="image-upload"/>
                     </form>
+                </div>
                     <div style="text-align: left"> <?php $getTato->showTatoes(); ?> </div>
 
                 </div>
