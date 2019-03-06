@@ -6,9 +6,9 @@ require_once __DIR__.'/../core/init.php';
 /** @var PDO $pdo */
 $pdo = Dbh::getInstance()->dbh;
 
-$tato_id = $_POST['liked_tato_id'];
+$tato_id = $_POST['liked_tato_id'] ?? '';
 
-$fan_id = $_POST['liker_id'];
+$fan_id = $_POST['liker_id'] ?? '';
 
 //UPDATE LIKE_FLAG
 $query = '
@@ -38,8 +38,8 @@ FROM tatos INNER JOIN `likes` ON `tatos`.tato_id = `likes`.tato_id
 WHERE `tatos`.tato_id = ?
 LIMIT 1');
 $stmt->execute(array($tato_id));
-$res = $stmt->fetch(PDO::FETCH_OBJ);
+$res = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if($res->like_flag == 1) echo 'Liked ';
+if($res['like_flag']) echo 'Liked ';
 else echo 'Like ';
-echo $res->likes_count;
+echo $res['likes_count'];
