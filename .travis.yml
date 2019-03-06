@@ -1,0 +1,8 @@
+language: php
+php:
+  - 7.3.2
+install:
+  - composer require guzzlehttp/guzzle:^6.3
+  - composer require phpunit/phpunit:^7
+script:
+  ./vendor/bin/phpunit

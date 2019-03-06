@@ -1,0 +1,14 @@
+{
+  "autoload": {
+    "classmap": [
+      "core/classes/"
+    ]
+  },
+  "require-dev": {
+  },
+  "require": {
+    "ext-pdo": "*",
+    "guzzlehttp/guzzle": "^6.3",
+    "phpunit/phpunit": "^7"
+  }
+}
