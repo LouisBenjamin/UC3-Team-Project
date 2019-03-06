@@ -1,13 +1,9 @@
 <?php
-
 include 'core/init.php';
 date_default_timezone_set('EST');
-
 /** @var $pdo PDO */
 global $pdo;
-
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 if (isset($_SESSION['user_id'])) {
   $user_data = User::getUserFromId($_SESSION['user_id']);
 } else {
@@ -15,9 +11,7 @@ if (isset($_SESSION['user_id'])) {
   echo "You are not logged in...redirecting to login page. ";
   exit;
 }
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     if (isset($_POST['tato_submit'])) {
     $text = htmlspecialchars($_POST['tato_status']);
     if (strlen($text) > 140) {
@@ -26,6 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $getTato->postTato($user_data->user_id, $text);
     }
   }
+   if (isset($_POST['image_submit'])) {
+    $image = file_get_contents(addslashes($_FILES['image']['tmp_name']));
+    $file = base64_encode($image);
+    $getTato->uploadTato($file, $user_data->user_id);
+  } 
 }
 ?>
 
@@ -40,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .well p {
             text-align: left;
         }
-
         .well img {
             margin: 20px 0;
         }
@@ -118,6 +116,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div style="text-align: left">
                             <button type="submit" name="tato_submit" class="btn btn-success">Submit</button>
                         </div>
+                    </form>
+                      <form method="post" enctype="multipart/form-data" style="text-align: left">
+                        <input type="file" name="image" id="image"/>
+                        <input type="submit" value="Upload" name="image_submit" id="image-upload"/>
                     </form>
                     <div style="text-align: left"> <?php $getTato->showTatoes(); ?> </div>
 
