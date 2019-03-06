@@ -28,9 +28,9 @@ function signUpEmail($email) : bool {
 function signUpPassword($password) : bool {
    
    if(strlen($password) < 7){ 
-         return false
+         return false;
        }else{
-        return true
+        return true;
        }
 }
 

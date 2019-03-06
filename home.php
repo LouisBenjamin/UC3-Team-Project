@@ -22,7 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 WHERE tato_id=? LIMIT 1';
     $stmt = $pdo->prepare($query);
     $stmt->execute(array($tato_id));
-  } else {
+  }else if (isset($_POST['image_submit'])) {
+    $image = file_get_contents(addslashes($_FILES['image']['tmp_name']));
+    $file = base64_encode($image);
+    $getTato->uploadTato($file, $user_data->user_id);
+  } 
+  else  {
     $text = htmlspecialchars($_POST['tato_status']);
     if (strlen($text) > 140) {
       $error = 'Length exceeds 140 characters. ';
@@ -31,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -118,6 +124,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div style="text-align: left">
                             <button type="submit" name="tato_submit" class="btn btn-success">Submit</button>
                         </div>
+                    </form>
+                    <form method="post" enctype="multipart/form-data" style="text-align: left">
+                        <input type="file" name="image" id="image"/>
+                        <input type="submit" value="Upload" name="image_submit" id="image-upload"/>
                     </form>
                     <div style="text-align: left"> <?php $getTato->showTatoes(); ?> </div>
 
