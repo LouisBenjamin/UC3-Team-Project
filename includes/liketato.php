@@ -1,6 +1,5 @@
 <?php
 
-//header("Content-type: text/plain");
 require_once __DIR__.'/../core/init.php';
 
 /** @var PDO $pdo */
@@ -31,7 +30,7 @@ WHERE `tatos`.tato_id = ?';
 $stmt = $pdo->prepare($query);
 $stmt->execute(array($tato_id));
 
-
+//RETRIEVE LIKE INFO
 $stmt = $pdo->prepare('
 SELECT `tatos`.likes_count, `likes`.like_flag
 FROM tatos INNER JOIN `likes` ON `tatos`.tato_id = `likes`.tato_id

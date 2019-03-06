@@ -3,6 +3,8 @@ require('core/init.php');
 
 if(isset($_GET['id'])) {
   $user_data = User::getUserFromId($_GET['id']);
+  $idol_id = $_GET['id'];
+  $fan_id = $_SESSION['user_id'];
 }
 else if(isset($_SESSION['user_id'])) {
   $user_data = User::getUserFromId($_SESSION['user_id']);
@@ -26,7 +28,15 @@ else if(isset($_SESSION['user_id'])) {
     <title>Tato</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!--    <link rel="stylesheet" href="css/main.css">-->
-
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js" defer></script>
+    <script defer>
+        function followMe(idol_id,fan_id) {
+            console.log("??");
+            $('#follow-btn').load('includes/follow.php', {
+                idol_id: idol_id, fan_id: fan_id
+            });
+        }
+    </script>
 
 </head>
 
@@ -66,10 +76,13 @@ else if(isset($_SESSION['user_id'])) {
                     <br>
                     <img src="data:image/jpeg;base64,<?php echo $user_data->profile_image; ?>" height="100"
                          width="100" alt="Profile Photo"/>
-
-                    <form method="post" enctype="multipart/form-data">
-                        <input type="file" name="image" id="image"/>
-                        <input type="submit" value="Upload" name="image_submit" id="image-upload"/>
+      <?php
+      if(!isset($_GET['id'])) {
+                 echo'   <form method="post" enctype="multipart/form-data">';
+                   echo'      <input type="file" name="image" id="image"/>';
+                   echo'      <input type="submit" value="Upload" name="image_submit" id="image-upload"/>';
+                   echo'  </form>';
+                } ?>
                 </div>
                 <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                     <div class="container">
@@ -80,7 +93,6 @@ else if(isset($_SESSION['user_id'])) {
                         </h2>
                         <p><?php echo  $user_data->bio; ?></p>
 
-
                     </div>
                     <hr>
                     <ul class="container details">
@@ -90,7 +102,25 @@ else if(isset($_SESSION['user_id'])) {
                     <hr>
 
                     <div class="col-sm-5 col-xs-6 tital ">
-                        <button type="submit" name="follow" class="btn btn-success">Follow</button>
+                        <?php
+                         if(isset($_GET['id'])) {
+                       echo ' <button type="button" name="follow" class="btn btn-success" onclick="followMe(';
+                       echo "{$idol_id}, {$fan_id}"; 
+                     echo ' )" id="follow-btn">';
+                           
+                            //RETRIEVE FOLLOW FLAG
+                            $stmt = $pdo->prepare('SELECT f_flag
+FROM follows WHERE fan_id = :fan_id AND idol_id = :idol_id
+LIMIT 1');
+                            $stmt->execute(array(
+                                ':idol_id' => $idol_id,
+                                ':fan_id' => $fan_id));
+                            $res = $stmt->fetch(PDO::FETCH_ASSOC)['f_flag'];
+                            if($res) echo 'Followed';
+                            else echo 'Follow'; 
+}
+                            ?>
+                        </button>
                     </div>
                 </div>
             </div>

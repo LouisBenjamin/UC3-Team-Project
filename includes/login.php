@@ -10,7 +10,8 @@ function login($email, $password) : bool {
   /** @var PDO $pdo */
   $pdo = Dbh::getInstance()->dbh;
   $stmt = $pdo->prepare('SELECT user_id FROM users WHERE email=:email AND psw=:password LIMIT 1');
-  $stmt->bindParam(":email", $email);
+  $stmt->bindParam(":email",
+      $email);
   $stmt->bindParam(":password", $password);
   try {
     $stmt->execute();
