@@ -18,21 +18,7 @@ if (isset($_SESSION['user_id'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-  if (isset($_POST['liked_tato_id'])) {
-    $tato_id = $_POST['liked_tato_id'];
-
-    // Prepare update statement
-    $query = 'UPDATE tatos 
-                SET likes_count = 
-                CASE WHEN likes_count IS NOT NULL 
-                THEN likes_count + 1 
-                ELSE 1 
-                END 
-                WHERE tato_id=? LIMIT 1';
-    $stmt = $pdo->prepare($query);
-    $stmt->execute(array($tato_id));
-
-  } else {
+    if (isset($_POST['tato_submit'])) {
     $text = htmlspecialchars($_POST['tato_status']);
     if (strlen($text) > 140) {
       $error = 'Length exceeds 140 characters. ';
@@ -59,6 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             margin: 20px 0;
         }
     </style>
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>
 </head>
 <body>
 
@@ -139,8 +128,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </div>
 
-
-<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>
