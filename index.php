@@ -2,6 +2,7 @@
 //error_reporting(E_ALL);
 //ini_set("display_errors", TRUE);
 require 'core/init.php';
+
 ?>
 <!doctype html>
 <html lang="en-US">
@@ -33,28 +34,23 @@ require 'core/init.php';
         <!-- Log In Section -->
         <div class="login-wrapper">
             <!--     			    /* Abir Check if the session variable user is set */ -->
-            <?php if (isset($_SESSION['user_id'])) { ?>
-                <p> Show logout button </p>
-                <?php
-            } else {
-                require 'includes/login.php';
-            }
-            ?>
+          <?php if (isset($_SESSION['user_id'])) : ?>
+              <p> <a href="includes/logout.php">Logout</a> </p>
+              <p> Already logged in, go to <a href="home.php"> home </a>. </p>
+        </div>
+            <?php
+          else:
+              require('includes/login.php');
+          ?>
         </div>
         <!--log in wrapper end-->
 
         <!-- SignUp Section -->
         <div class="signup-wrapper">
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <p> Already logged in, go to <a href="home.php"> home </a>. </p>
-            <?php else: ?>
-            <p> Not logged in
-            <p>
-                <?php require 'includes/signup.php';
-                endif; ?>
+            <p><?php require 'includes/signup.php';?></p>
         </div>
         <!-- SIGN UP wrapper end -->
-
+        <?php endif; ?>
     </div><!-- content right ends -->
 
 </div><!-- main container end -->
