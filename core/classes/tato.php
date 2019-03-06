@@ -21,11 +21,18 @@ class Tato
 
   public function showTatoes() {
     // Select all info from tatos table
-    $sel_data = $this->pdo->prepare('SELECT user_id,status,created,t.tato_id,likes_count FROM tatos t ORDER BY created DESC LIMIT 10;');
+    $sel_data = $this->pdo->prepare('
+SELECT user_id,status,created,t.tato_id,likes_count FROM tatos t ORDER BY created DESC LIMIT 10;
+');
     $sel_data->execute();
     $result = $sel_data->fetchAll();
     foreach ($result as $row) {
       $user_data = User::getUserFromId($row['user_id']);
+        $stmt = $this->pdo->prepare('
+SELECT like_flag FROM tatos t INNER JOIN likes l on t.tato_id = l.tato_id AND t.tato_id= ? AND l.fan_id = ?;
+');
+        $stmt->execute(array($row['tato_id'],$_SESSION['user_id']));
+        $liked = $stmt->fetch(PDO::FETCH_OBJ)->like_flag;
       echo "
                 <p><a href=\"profile.php?id={$row['user_id']}\" class=\"username\">{$user_data->username}</a>:</p>
                 <p>{$row['status']} </p>
@@ -42,7 +49,11 @@ class Tato
                         <button type=\"button\" id=\"like-btn\" class=\"btn btn-default btn-sm\" onclick=\"sendLikedTatoId({$row['tato_id']},{$_SESSION['user_id']})\">
                             <span class=\"glyphicon glyphicon-thumbs-up\"></span>
                             <!-- To display the number of likes for a tato fetched from table -->
-                            <span id=\"tato-like-{$row['tato_id']}\">"; if($row['like_flag'] == 1) echo 'Liked '; else echo 'Like '; echo "{$row['likes_count']} </span>
+                            <span id=\"tato-like-{$row['tato_id']}\">";
+      if($liked)
+          echo 'Liked ';
+      else echo 'Like ';
+      echo "{$row['likes_count']} </span>
                         </button>
                         
                     </div>
