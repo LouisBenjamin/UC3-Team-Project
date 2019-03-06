@@ -102,8 +102,12 @@ else if(isset($_SESSION['user_id'])) {
                     <hr>
 
                     <div class="col-sm-5 col-xs-6 tital ">
-                        <button type="button" name="follow" class="btn btn-success" onclick="followMe(<?php echo "{$idol_id}, {$fan_id}"; ?>)" id="follow-btn">
-                            <?php
+                        <?php
+                         if(isset($_GET['id'])) {
+                       echo ' <button type="button" name="follow" class="btn btn-success" onclick="followMe(';
+                       echo "{$idol_id}, {$fan_id}"; 
+                     echo ' )" id="follow-btn">';
+                           
                             //RETRIEVE FOLLOW FLAG
                             $stmt = $pdo->prepare('SELECT f_flag
 FROM follows WHERE fan_id = :fan_id AND idol_id = :idol_id
@@ -113,7 +117,9 @@ LIMIT 1');
                                 ':fan_id' => $fan_id));
                             $res = $stmt->fetch(PDO::FETCH_ASSOC)['f_flag'];
                             if($res) echo 'Followed';
-                            else echo 'Follow'; ?>
+                            else echo 'Follow'; 
+}
+                            ?>
                         </button>
                     </div>
                 </div>
