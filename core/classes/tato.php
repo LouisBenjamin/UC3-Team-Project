@@ -19,10 +19,19 @@ class Tato
     ));
   }
 
+   public function uploadTato($file,$user_id) {
+    $ins_db = $this->pdo->prepare('INSERT INTO tatos (user_id,tato_image,created) VALUES (:uid,:file,:created)');
+    $ins_db->execute(array(
+        ':uid' => $user_id,
+        ':file' => $file,
+        ':created' => date("Y-m-d H:i:s", time()),
+    ));
+  }
+
   public function showTatoes() {
     // Select all info from tatos table
     $sel_data = $this->pdo->prepare('
-SELECT user_id,status,created,t.tato_id,likes_count FROM tatos t ORDER BY created DESC LIMIT 10;
+SELECT user_id,status,tato_image,created,t.tato_id,likes_count FROM tatos t ORDER BY created DESC LIMIT 10;
 ');
     $sel_data->execute();
     $result = $sel_data->fetchAll();
@@ -34,9 +43,19 @@ SELECT like_flag FROM tatos t INNER JOIN likes l on t.tato_id = l.tato_id AND t.
         $stmt->execute(array($row['tato_id'],$_SESSION['user_id']));
         $liked = $stmt->fetch(PDO::FETCH_ASSOC)['f_flag'] ?? '';
       echo "
-                <p><a href=\"profile.php?id={$row['user_id']}\" class=\"username\">{$user_data->username}</a>:</p>
-                <p>{$row['status']} </p>
-                <div>
+                <p><a href=\"profile.php?id={$row['user_id']}\" class=\"username\">{$user_data->username}</a>:</p>";
+
+                if(!empty($row['status'])){
+                   echo"<p>{$row['status']} </p>";
+                }
+
+
+               if(!empty($row['tato_image'])){
+                echo '<img src="data:image/jpeg;base64,'.($row['tato_image']).'" height="50%"
+                         width="75%"/>';
+                 }
+
+               echo" <div>
                     <script>
                         // Function to update tato like and refresh count
                         function sendLikedTatoId(tato_id, fan_id) {
