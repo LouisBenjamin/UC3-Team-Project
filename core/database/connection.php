@@ -1,6 +1,7 @@
 <?php
 class Dbh
 {
+    /** @var PDO  */
   public $dbh; // handle of the db connexion
   private static $instance;
 
@@ -11,7 +12,7 @@ class Dbh
     $password =	"tatouc3";
     try{
       $this->dbh = new PDO($dsn, $user, $password);
-      echo "Connected successfully";
+      //echo "Connected successfully";
     }catch(PDOException $e){
       echo 'Connection error!' .$e-> getMessage();
     }
