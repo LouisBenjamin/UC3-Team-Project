@@ -76,11 +76,13 @@ else if(isset($_SESSION['user_id'])) {
                     <br>
                     <img src="data:image/jpeg;base64,<?php echo $user_data->profile_image; ?>" height="100"
                          width="100" alt="Profile Photo"/>
-
-                    <form method="post" enctype="multipart/form-data">
-                        <input type="file" name="image" id="image"/>
-                        <input type="submit" value="Upload" name="image_submit" id="image-upload"/>
-                    </form>
+      <?php
+      if(!isset($_GET['id'])) {
+                 echo'   <form method="post" enctype="multipart/form-data">';
+                   echo'      <input type="file" name="image" id="image"/>';
+                   echo'      <input type="submit" value="Upload" name="image_submit" id="image-upload"/>';
+                   echo'  </form>';
+                } ?>
                 </div>
                 <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                     <div class="container">
