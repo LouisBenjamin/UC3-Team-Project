@@ -11,8 +11,8 @@ class SignUpTest extends TestCase
     // False name combination
     $this->assertFalse(signUpName('steve@'));
 
-    // True name combination
-    $this->assertTrue(signUpName('steve rogers'));
+    // False name combination too many characters
+    $this->assertFalse(signUpName('steve rogers'));
 
   	// False email combination
     $this->assertFalse(signUpEmail('steve@@#'));
