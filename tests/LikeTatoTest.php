@@ -10,7 +10,7 @@ class LikeTatoTest extends TestCase
 
     protected function setUp() {
         $this->client = new GuzzleHttp\Client([
-            'base_uri' =>"https://api.travis-ci.org/repo/"
+            'base_uri' =>"https://travis-ci.com/"
         ]);
     }
 
