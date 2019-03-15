@@ -1,5 +1,5 @@
 <?php
-include 'core/init.php';
+include dirname(__FILE__) . '/core/init.php';
 date_default_timezone_set('EST');
 /** @var $pdo PDO */
 global $pdo;

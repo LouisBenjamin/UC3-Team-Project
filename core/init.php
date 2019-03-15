@@ -8,4 +8,3 @@ include 'classes/tato.php';
 $pdo = Dbh::getInstance()->dbh;
 $getUser = new User($pdo);
 $getTato = new Tato($pdo);
-define("Base_URL", "http://localhost/tato/");
