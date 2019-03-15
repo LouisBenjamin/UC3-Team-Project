@@ -86,17 +86,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <p><b> Following: <?= $user_data->idol_count; ?></b></p>
 
             </div>
-            <!--            <div class="well">-->
-            <!--                <p><a href="#">Interests</a></p>-->
-            <!--                <p>-->
-            <!--                    <span class="label label-default">Category</span>-->
-            <!--                    <span class="label label-primary">Category</span>-->
-            <!--                    <span class="label label-success">Category</span>-->
-            <!--                    <span class="label label-info">Category</span>-->
-            <!--                    <span class="label label-warning">Category</span>-->
-            <!--                    <span class="label label-danger">Category</span>-->
-            <!--                </p>-->
-            <!--            </div>-->
         </div>
         <div class="col-sm-7">
 
@@ -109,16 +98,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="form-group">
                             <textarea class="form-control" name="tato_status" rows="3" required></textarea>
                           <?php
-                          if (isset($error)) {
-                            echo '<div class="span-fp-error">' . $error . '</div>';
-                          }
+                          if (isset($error)) echo '<div class="span-fp-error">' . $error . '</div>';
                           ?>
                         </div>
                         <div style="text-align: left">
                             <button type="submit" name="tato_submit" class="btn btn-success">Submit</button>
                         </div>
                     </form>
-                      <form method="post" enctype="multipart/form-data" style="text-align: left">
+                    <form method="post" enctype="multipart/form-data" style="text-align: left">
                         <input type="file" name="image" id="image"/>
                         <input type="submit" value="Upload" name="image_submit" id="image-upload"/>
                     </form>

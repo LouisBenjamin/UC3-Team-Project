@@ -15,7 +15,7 @@ class LikeTatoTest extends TestCase
     }
 
 //    public function testValidLikeRequest() {
-//        $response = $this->client->request('POST', '/uc3/includes/liketato.php', [
+//        $response = $this->client->request('POST', '/DOCROOT/includes/liketato.php', [
 //            'form_params' => [
 //                'liked_tato_id' => 115,
 //                'liker_id' => 9,
@@ -27,7 +27,7 @@ class LikeTatoTest extends TestCase
 //    }
 //
 //    public function testInvalidLikeRequest() {
-//        $response = $this->client->request('POST', '/uc3/includes/liketato.php', [
+//        $response = $this->client->request('POST', '/DOCROOT/includes/liketato.php', [
 //            'form_params' => [
 //                ''
 //            ]
