@@ -23,7 +23,7 @@ LIMIT 1');
 $stmt->execute(array(
     ':idol_id' => $idol_id,
     ':fan_id' => $fan_id));
-$res = $stmt->fetch(PDO::FETCH_ASSOC)['f_flag'];
+$res = $stmt->fetch(PDO::FETCH_ASSOC)['f_flag'] ?? '';
 
 //UPDATE FOLLOW COUNT BASED ON FLAG (?)
 if($res) echo 'Followed';

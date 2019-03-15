@@ -41,7 +41,7 @@ SELECT user_id,status,tato_image,created,t.tato_id,likes_count FROM tatos t ORDE
 SELECT like_flag FROM tatos t INNER JOIN likes l on t.tato_id = l.tato_id AND t.tato_id= ? AND l.fan_id = ?;
 ');
         $stmt->execute(array($row['tato_id'],$_SESSION['user_id']));
-        $liked = $stmt->fetch(PDO::FETCH_ASSOC)['f_flag'];
+        $liked = $stmt->fetch(PDO::FETCH_ASSOC)['f_flag'] ?? '';
       echo "
                 <p><a href=\"profile.php?id={$row['user_id']}\" class=\"username\">{$user_data->username}</a>:</p>";
 
