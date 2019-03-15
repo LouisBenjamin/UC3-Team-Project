@@ -10,12 +10,12 @@ class LikeTatoTest extends TestCase
 
     protected function setUp() {
         $this->client = new GuzzleHttp\Client([
-            'base_uri' => $_SERVER['HTTP_HOST']
+            'base_uri' =>"https://api.travis-ci.org/repo/"
         ]);
     }
 
     public function testValidLikeRequest() {
-        $response = $this->client->request('POST', '/uc3/includes/liketato.php', [
+        $response = $this->client->request('POST', '/LouisBenjamin/UC3-Team-Project/includes/liketato.php', [
             'form_params' => [
                 'liked_tato_id' => 157,
                 'liker_id' => 9,
@@ -27,7 +27,7 @@ class LikeTatoTest extends TestCase
     }
 
     public function testInvalidLikeRequest() {
-        $response = $this->client->request('POST', '/uc3/includes/liketato.php', [
+        $response = $this->client->request('POST', '/LouisBenjamin/UC3-Team-Project/includes/liketato.php', [
             'form_params' => [
                 ''
             ]
