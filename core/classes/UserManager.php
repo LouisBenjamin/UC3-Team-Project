@@ -50,6 +50,23 @@ class UserManager
         }
     }
 
+    /**
+     * @param $email string email of logging in user
+     * @param $password string password of logging in user
+     * @return bool success then true, fail then false
+     */
+    function validateName($name): bool {
+        return (strlen($name) < 7 && ctype_alpha($name));
+    }
+
+    function validateEmail($email): bool {
+        return (filter_var($email, FILTER_VALIDATE_EMAIL));
+    }
+
+    function validatePassword($password): bool {
+        return (strlen($password) >= 7);
+    }
+
     public function emailCheck($email) {
         $stmt = $this->pdo->prepare('SELECT email FROM users WHERE email=:email');
         $stmt->bindParam(":email", $email);
