@@ -8,6 +8,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
 class UserManagerTest extends TestCase
 {
 
+    public function testGetUserFromId() {
+        $this->assertEquals('y@z.com', UserManager::getUserFromId(9)->email);
+    }
+
     public function testLogin() {
         global $getUserManager;
         // False using random combination in database
