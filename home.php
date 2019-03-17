@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 });
                             </script>
                             <div style="text-align: left">
-                                <input type="submit" name="tatoSclickubmit" class="btn btn-success" value="Potato" disabled>
+                                <input type="submit" name="tatoSubmit" class="btn btn-success" value="Potato" disabled>
                             </div>
                         </form>
                     </div>
