@@ -12,18 +12,13 @@ if (isset($_SESSION['user_id'])) {
     exit;
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['tato_submit'])) {
-        $text = htmlspecialchars($_POST['tato_status']);
-        if (strlen($text) > 140) {
-            $error = 'Length exceeds 140 characters. ';
-        } else {
-            $getTato->postTato($user_data->user_id, $text);
-        }
-    }
-    if (isset($_POST['image_submit'])) {
-        $image = file_get_contents(addslashes($_FILES['image']['tmp_name']));
-        $file = base64_encode($image);
-        $getTato->uploadTato($file, $user_data->user_id);
+    if (isset($_POST['tatoSubmit'])) {
+        $text = htmlspecialchars($_POST['tatoStatus']);
+        if (is_uploaded_file($_FILES['tatoImage']['tmp_name'])) {
+            $image = file_get_contents(addslashes($_FILES['tatoImage']['tmp_name']));
+            $file = base64_encode($image);
+        } else $file = NULL;
+        $getTato->postTato($user_data->user_id, $text, $file);
     }
 }
 ?>
@@ -47,6 +42,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <script src="https://code.jquery.com/jquery-2.2.1.min.js" defer></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>
+    <script>
+        function validateTato() {
+            let errorMsg = document.getElementById("tatoInvalid"), invalid = true;
+            let statusLen = document.tatoForm.tatoStatus.value.length;
+            if (statusLen > 140) {
+                errorMsg.innerHTML = 'Length exceeds 140 characters. ';
+            } else if (statusLen === 0 && document.tatoForm.tatoImage.value === "") {
+                document.tatoForm.tatoStatus.required = true;
+                document.tatoForm.tatoImage.required = true;
+                errorMsg.innerHTML = 'Cannot post empty tato. ';
+            } else {
+                document.tatoForm.tatoStatus.required = false;
+                document.tatoForm.tatoImage.required = false;
+                errorMsg.innerHTML = '';
+                invalid = false;
+            }
+            document.tatoForm.tatoSubmit.disabled = invalid;
+        }
+    </script>
 </head>
 <body>
 
@@ -94,22 +108,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div class="col-md-12">
                     <div class="well" style="margin-bottom: 0">
-                        <form role="form" method="post">
+                        <form name="tatoForm" role="form" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="tato_status" style="display:block;text-align:left">Post a tato</label>
-                                <textarea class="form-control" id="tato_status" name="tato_status" rows="3"
-                                          required></textarea>
-                                <?php
-                                if (isset($error)) echo '<div class="span-fp-error">' . $error . '</div>';
-                                ?>
+                                <label for="tatoStatus" style="display:block;text-align:left">Post a tato</label>
+                                <textarea class="form-control" id="tatoStatus" name="tatoStatus" rows="3"
+                                          required onchange="validateTato()"></textarea>
+                                <p id="tatoInvalid" class="span-fp-error"></p>
+                                <input id="tatoImage" type="file" name="tatoImage">
                             </div>
+                            <script>
+                                ["click", "change"].forEach(function (evt) {
+                                    document.tatoForm.tatoImage.addEventListener(evt, validateTato, false);
+                                });
+                                document.tatoForm.tatoStatus.addEventListener("keyup", validateTato, false);
+                            </script>
                             <div style="text-align: left">
-                                <input type="submit" name="tato_submit" class="btn btn-success" value="Potato">
+                                <input type="submit" name="tatoSclickubmit" class="btn btn-success" value="Potato" disabled>
                             </div>
-                        </form>
-                        <form method="post" enctype="multipart/form-data" style="text-align: left">
-                            <input type="file" name="image" id="image"/>
-                            <input type="submit" value="Upload" name="image_submit" id="image-upload"/>
                         </form>
                     </div>
                     <div style="text-align: left"> <?php $getTato->showTatoes(); ?> </div>

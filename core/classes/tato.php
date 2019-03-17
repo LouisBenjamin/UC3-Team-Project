@@ -10,19 +10,11 @@ class Tato
         $this->pdo = $pdo;
     }
 
-    public function postTato($uid, $text) {
-        $ins_db = $this->pdo->prepare('INSERT INTO tatos (user_id,status,created) VALUES (:uid,:text,:created)');
+    public function postTato($uid, $text, $file) {
+        $ins_db = $this->pdo->prepare('INSERT INTO tatos (user_id,status,tato_image,created) VALUES (:uid,:text,:file,:created)');
         $ins_db->execute(array(
             ':uid' => $uid,
             ':text' => $text,
-            ':created' => date("Y-m-d H:i:s", time()),
-        ));
-    }
-
-    public function uploadTato($file, $user_id) {
-        $ins_db = $this->pdo->prepare('INSERT INTO tatos (user_id,tato_image,created) VALUES (:uid,:file,:created)');
-        $ins_db->execute(array(
-            ':uid' => $user_id,
             ':file' => $file,
             ':created' => date("Y-m-d H:i:s", time()),
         ));
