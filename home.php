@@ -120,7 +120,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 ["click", "change"].forEach(function (evt) {
                                     document.tatoForm.tatoImage.addEventListener(evt, validateTato, false);
                                 });
-                                document.tatoForm.tatoStatus.addEventListener("keyup", validateTato, false);
+                                ["keyup", "blur", "change"].forEach(function (evt) {
+                                    document.tatoForm.tatoStatus.addEventListener(evt, validateTato, false);
+                                });
                             </script>
                             <div style="text-align: left">
                                 <input type="submit" name="tatoSclickubmit" class="btn btn-success" value="Potato" disabled>
