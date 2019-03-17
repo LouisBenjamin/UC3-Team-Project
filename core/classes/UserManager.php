@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__.'/../database/connection.php';
+require_once __DIR__ . '/../database/connection.php';
 
-class User
+class UserManager
 {
     /** @var $pdo PDO */
     protected $pdo;
@@ -21,6 +21,33 @@ class User
         $stmt = $pdo->prepare('SELECT * FROM users WHERE user_id = ? LIMIT 1');
         $stmt->execute(array($uid));
         return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    /**
+     * @param $email string email of logging in user
+     * @param $password string password of logging in user
+     * @return bool success then true, fail then false
+     */
+    function login($email, $password): bool {
+        /** @var PDO $pdo */
+        $pdo = Dbh::getInstance()->dbh;
+        $stmt = $pdo->prepare('SELECT user_id FROM users WHERE email=:email AND psw=:password LIMIT 1');
+        $stmt->bindParam(":email",
+            $email);
+        $stmt->bindParam(":password", $password);
+        try {
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        $user = $stmt->fetch(PDO::FETCH_OBJ);
+        $count = $stmt->rowCount();
+        if ($count > 0) {
+            $_SESSION['user_id'] = $user->user_id;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function emailCheck($email) {
@@ -44,7 +71,7 @@ class User
         $stmt->execute();
     }
 
-    public function upload($file, $user_id) {
+    public function uploadPic($file, $user_id) {
 
         $stmt = $this->pdo->prepare('UPDATE users SET profile_image =:file WHERE user_id=:user');
         $stmt->bindParam(':file', $file);
@@ -56,7 +83,6 @@ class User
         }
 
     }
-
 
 }
 

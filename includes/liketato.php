@@ -2,6 +2,8 @@
 
 require_once __DIR__.'/../core/init.php';
 
+
+
 /** @var PDO $pdo */
 $pdo = Dbh::getInstance()->dbh;
 

@@ -1,5 +1,5 @@
 <?php
-require_once('user.php');
+require_once('UserManager.php');
 
 class Tato
 {
@@ -36,7 +36,7 @@ SELECT user_id,status,tato_image,created,t.tato_id,likes_count FROM tatos t ORDE
         $sel_data->execute();
         $result = $sel_data->fetchAll();
         foreach ($result as $row) {
-            $user_data = User::getUserFromId($row['user_id']);
+            $user_data = UserManager::getUserFromId($row['user_id']);
             $stmt = $this->pdo->prepare('
                 SELECT like_flag FROM tatos t INNER JOIN likes l on t.tato_id = l.tato_id AND t.tato_id= ? AND l.fan_id = ?;
             ');

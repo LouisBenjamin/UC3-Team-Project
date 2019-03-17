@@ -2,16 +2,16 @@
 require('core/init.php');
 
 if (isset($_GET['id'])) {
-  $user_data = User::getUserFromId($_GET['id']);
+  $user_data = UserManager::getUserFromId($_GET['id']);
   $idol_id = $_GET['id'];
   $fan_id = $_SESSION['user_id'];
 } else if (isset($_SESSION['user_id'])) {
-  $user_data = User::getUserFromId($_SESSION['user_id']);
+  $user_data = UserManager::getUserFromId($_SESSION['user_id']);
 
   if (isset($_POST['image_submit'])) {
     $image = file_get_contents(addslashes($_FILES['image']['tmp_name']));
     $file = base64_encode($image);
-    $getUser->upload($file, $user_data->user_id);
+    $getUserManager->uploadPic($file, $user_data->user_id);
   }
 }
 

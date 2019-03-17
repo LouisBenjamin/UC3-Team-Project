@@ -5,26 +5,26 @@ date_default_timezone_set('EST');
 global $pdo;
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if (isset($_SESSION['user_id'])) {
-  $user_data = User::getUserFromId($_SESSION['user_id']);
+    $user_data = UserManager::getUserFromId($_SESSION['user_id']);
 } else {
-  header("refresh: 1; url=index.php");
-  echo "You are not logged in...redirecting to login page. ";
-  exit;
+    header("refresh: 1; url=index.php");
+    echo "You are not logged in...redirecting to login page. ";
+    exit;
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['tato_submit'])) {
-    $text = htmlspecialchars($_POST['tato_status']);
-    if (strlen($text) > 140) {
-      $error = 'Length exceeds 140 characters. ';
-    } else {
-      $getTato->postTato($user_data->user_id, $text);
+        $text = htmlspecialchars($_POST['tato_status']);
+        if (strlen($text) > 140) {
+            $error = 'Length exceeds 140 characters. ';
+        } else {
+            $getTato->postTato($user_data->user_id, $text);
+        }
     }
-  }
-   if (isset($_POST['image_submit'])) {
-    $image = file_get_contents(addslashes($_FILES['image']['tmp_name']));
-    $file = base64_encode($image);
-    $getTato->uploadTato($file, $user_data->user_id);
-  } 
+    if (isset($_POST['image_submit'])) {
+        $image = file_get_contents(addslashes($_FILES['image']['tmp_name']));
+        $file = base64_encode($image);
+        $getTato->uploadTato($file, $user_data->user_id);
+    }
 }
 ?>
 
@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .well p {
             text-align: left;
         }
+
         .well img {
             margin: 20px 0;
         }
@@ -93,23 +94,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div class="col-md-12">
                     <div class="well" style="margin-bottom: 0">
-                    <h4 style="text-align: left">Leave a Tato</h4>
-                    <form role="form" method="post">
-                        <div class="form-group">
-                            <textarea class="form-control" name="tato_status" rows="3" required></textarea>
-                          <?php
-                          if (isset($error)) echo '<div class="span-fp-error">' . $error . '</div>';
-                          ?>
-                        </div>
-                        <div style="text-align: left">
-                            <button type="submit" name="tato_submit" class="btn btn-success">Submit</button>
-                        </div>
-                    </form>
-                    <form method="post" enctype="multipart/form-data" style="text-align: left">
-                        <input type="file" name="image" id="image"/>
-                        <input type="submit" value="Upload" name="image_submit" id="image-upload"/>
-                    </form>
-                </div>
+                        <form role="form" method="post">
+                            <div class="form-group">
+                                <label for="tato_status" style="display:block;text-align:left">Post a tato</label>
+                                <textarea class="form-control" id="tato_status" name="tato_status" rows="3"
+                                          required></textarea>
+                                <?php
+                                if (isset($error)) echo '<div class="span-fp-error">' . $error . '</div>';
+                                ?>
+                            </div>
+                            <div style="text-align: left">
+                                <input type="submit" name="tato_submit" class="btn btn-success" value="Potato">
+                            </div>
+                        </form>
+                        <form method="post" enctype="multipart/form-data" style="text-align: left">
+                            <input type="file" name="image" id="image"/>
+                            <input type="submit" value="Upload" name="image_submit" id="image-upload"/>
+                        </form>
+                    </div>
                     <div style="text-align: left"> <?php $getTato->showTatoes(); ?> </div>
 
                 </div>

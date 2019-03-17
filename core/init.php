@@ -2,9 +2,9 @@
 
 session_start();
 include 'database/connection.php';
-include 'classes/user.php';
+include 'classes/UserManager.php';
 include 'classes/tato.php';
 
 $pdo = Dbh::getInstance()->dbh;
-$getUser = new User($pdo);
+$getUserManager = new UserManager($pdo);
 $getTato = new Tato($pdo);
