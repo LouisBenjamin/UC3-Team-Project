@@ -19,8 +19,8 @@ if (isset($_POST['signup'])) {
             if ($getUserManager->emailCheck($email) == true) {
                 $sign_up_error = "Email already exist";
             } else {
-                $getUserManager->register($email, $name, $password);
-                header('Location: home.php');
+                $getUserManager->register($email, $name, password_hash($password,PASSWORD_BCRYPT));
+                $getUserManager->login($email,$password);
             }
         }
     }

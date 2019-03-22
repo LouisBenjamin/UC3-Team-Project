@@ -75,6 +75,7 @@ if (isset($_POST['email']) && isset($_POST['pwd'])) {
 		                <div class="text-center">
 		                  <a class="small" href="#">Forgot password?</a></div>
 		              </form>
+                        <?php require_once "includes/signup.php"; ?>
 		            </div>
 		          </div>
 		        </div>

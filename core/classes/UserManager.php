@@ -28,26 +28,24 @@ class UserManager
      * @param $password string password of logging in user
      * @return bool success then true, fail then false
      */
-    function login($email, $password): bool {
+    function login($email, $password) {
         /** @var PDO $pdo */
-        $pdo = Dbh::getInstance()->dbh;
-        $stmt = $pdo->prepare('SELECT user_id FROM users WHERE email=:email AND psw=:password LIMIT 1');
-        $stmt->bindParam(":email",
-            $email);
-        $stmt->bindParam(":password", $password);
+        $stmt = $this->pdo->prepare('SELECT user_id,psw FROM users WHERE email=:email LIMIT 1');
+        $stmt->bindParam(":email",$email);
         try {
             $stmt->execute();
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
-        $user = $stmt->fetch(PDO::FETCH_OBJ);
         $count = $stmt->rowCount();
         if ($count > 0) {
-            $_SESSION['user_id'] = $user->user_id;
-            return true;
-        } else {
-            return false;
+            $user = $stmt->fetch(PDO::FETCH_OBJ);
+            if (password_verify($password,$user->psw)) {
+                $_SESSION['user_id'] = $user->user_id;
+                return true;
+            }
         }
+        return false;
     }
 
     /**
@@ -80,7 +78,6 @@ class UserManager
     }
 
     public function register($email, $name, $password) {
-        echo $email;
         $stmt = $this->pdo->prepare('INSERT INTO users (username,email,psw) VALUES (:name, :email, :password)');
         $stmt->bindParam(":name", $name);
         $stmt->bindParam(":email", $email);

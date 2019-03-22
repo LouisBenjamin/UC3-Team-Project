@@ -1,8 +1,7 @@
 <?php
 //error_reporting(E_ALL);
 //ini_set("display_errors", TRUE);
-require 'core/init.php';
-
+require_once __DIR__ . '/core/init.php';
 ?>
 <!doctype html>
 <html lang="en-US">
