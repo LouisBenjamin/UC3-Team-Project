@@ -44,17 +44,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>
     <script>
         function validateTato() {
-            let errorMsg = document.getElementById("tatoInvalid"), invalid = true;
-            let statusLen = document.tatoForm.tatoStatus.value.length;
+            let errorMsg = document.getElementById("tatoInvalid"),
+                invalid = true;
+            let tato = document.tatoForm,
+                statusLen = tato.tatoStatus.value.length;
             if (statusLen > 140) {
                 errorMsg.innerHTML = 'Length exceeds 140 characters. ';
-            } else if (statusLen === 0 && document.tatoForm.tatoImage.value === "") {
-                document.tatoForm.tatoStatus.required = true;
-                document.tatoForm.tatoImage.required = true;
+            } else if (statusLen === 0 && tato.tatoImage.value === "") {
+                tato.tatoStatus.required = true;
+                tato.tatoImage.required = true;
                 errorMsg.innerHTML = 'Cannot post empty tato. ';
             } else {
-                document.tatoForm.tatoStatus.required = false;
-                document.tatoForm.tatoImage.required = false;
+                tato.tatoStatus.required = false;
+                tato.tatoImage.required = false;
                 errorMsg.innerHTML = '';
                 invalid = false;
             }
