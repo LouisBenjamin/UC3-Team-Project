@@ -1,21 +1,19 @@
 <?php
 require('core/init.php');
 
-if(isset($_GET['id'])) {
-  $user_data = User::getUserFromId($_GET['id']);
+if (isset($_GET['id'])) {
+  $user_data = UserManager::getUserFromId($_GET['id']);
   $idol_id = $_GET['id'];
   $fan_id = $_SESSION['user_id'];
-}
-else if(isset($_SESSION['user_id'])) {
-  $user_data = User::getUserFromId($_SESSION['user_id']);
+} else if (isset($_SESSION['user_id'])) {
+  $user_data = UserManager::getUserFromId($_SESSION['user_id']);
 
   if (isset($_POST['image_submit'])) {
     $image = file_get_contents(addslashes($_FILES['image']['tmp_name']));
     $file = base64_encode($image);
-    $getUser->upload($file, $user_data->user_id);
+    $getUserManager->uploadPic($file, $user_data->user_id);
   }
 }
-
 
 ?>
 
@@ -30,8 +28,7 @@ else if(isset($_SESSION['user_id'])) {
     <!--    <link rel="stylesheet" href="css/main.css">-->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js" defer></script>
     <script defer>
-        function followMe(idol_id,fan_id) {
-            console.log("??");
+        function requestFollow(idol_id, fan_id) {
             $('#follow-btn').load('includes/follow.php', {
                 idol_id: idol_id, fan_id: fan_id
             });
@@ -76,50 +73,47 @@ else if(isset($_SESSION['user_id'])) {
                     <br>
                     <img src="data:image/jpeg;base64,<?php echo $user_data->profile_image; ?>" height="100"
                          width="100" alt="Profile Photo"/>
-      <?php
-      if(!isset($_GET['id'])) {
-                 echo'   <form method="post" enctype="multipart/form-data">';
-                   echo'      <input type="file" name="image" id="image"/>';
-                   echo'      <input type="submit" value="Upload" name="image_submit" id="image-upload"/>';
-                   echo'  </form>';
-                } ?>
+                  <?php
+                  if (!isset($_GET['id'])) {
+                    echo '   <form method="post" enctype="multipart/form-data">';
+                    echo '      <input type="file" name="image" id="image"/>';
+                    echo '      <input type="submit" value="Upload" name="image_submit" id="image-upload"/>';
+                    echo '  </form>';
+                  } ?>
                 </div>
                 <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                     <div class="container">
-                        <h2><?php echo  $user_data->username; ?>
+                        <h2><?php echo $user_data->username; ?>
                             <button type="submit" name="follow" class="btn btn-default" style="margin-left: 570px">
                                 Edit
                             </button>
                         </h2>
-                        <p><?php echo  $user_data->bio; ?></p>
+                        <p><?php echo $user_data->bio; ?></p>
 
                     </div>
                     <hr>
                     <ul class="container details">
-                        <li><p>ID: <?php echo  $user_data->user_id; ?></p></li>
-                        <li><p><?php echo  $user_data->email; ?></p></li>
+                        <li><p>ID: <?php echo $user_data->user_id; ?></p></li>
+                        <li><p><?php echo $user_data->email; ?></p></li>
                     </ul>
                     <hr>
 
                     <div class="col-sm-5 col-xs-6 tital ">
+                      <?php if (isset($_GET['id'])): ?>
+                        <button type="button" name="follow" class="btn btn-success" onclick="requestFollow(
+                        <?php echo "{$idol_id}, {$fan_id}" ?>)" id="follow-btn">
                         <?php
-                         if(isset($_GET['id'])) {
-                       echo ' <button type="button" name="follow" class="btn btn-success" onclick="followMe(';
-                       echo "{$idol_id}, {$fan_id}"; 
-                     echo ' )" id="follow-btn">';
-                           
-                            //RETRIEVE FOLLOW FLAG
-                            $stmt = $pdo->prepare('SELECT f_flag
-FROM follows WHERE fan_id = :fan_id AND idol_id = :idol_id
-LIMIT 1');
-                            $stmt->execute(array(
-                                ':idol_id' => $idol_id,
-                                ':fan_id' => $fan_id));
-                            $res = $stmt->fetch(PDO::FETCH_ASSOC)['f_flag'];
-                            if($res) echo 'Followed';
-                            else echo 'Follow'; 
-}
-                            ?>
+                        //RETRIEVE FOLLOW FLAG
+                        $stmt = $pdo->prepare('SELECT f_flag FROM follows 
+WHERE fan_id = :fan_id AND idol_id = :idol_id LIMIT 1');
+                        $stmt->execute(array(
+                            ':idol_id' => $idol_id,
+                            ':fan_id' => $fan_id));
+                        $res = $stmt->fetch(PDO::FETCH_ASSOC)['f_flag'] ?? '';
+                        if ($res) echo 'Followed';
+                        else echo 'Follow';
+                      endif;
+                      ?>
                         </button>
                     </div>
                 </div>
