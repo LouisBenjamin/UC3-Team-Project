@@ -101,7 +101,7 @@ if (isset($_GET['id'])) {
                     <div class="col-sm-5 col-xs-6 tital ">
                       <?php if (isset($_GET['id'])): ?>
                         <button type="button" name="follow" class="btn btn-success" onclick="requestFollow(
-                        <?php echo "{$idol_id}, {$fan_id}"; ?>)" id="follow-btn">;
+                        <?php echo "{$idol_id}, {$fan_id}" ?>)" id="follow-btn">
                         <?php
                         //RETRIEVE FOLLOW FLAG
                         $stmt = $pdo->prepare('SELECT f_flag FROM follows 
