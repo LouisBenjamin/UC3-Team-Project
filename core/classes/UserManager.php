@@ -23,6 +23,14 @@ class UserManager
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    public static function image_retrieve($uid) {
+        $pdo = Dbh::getInstance()->dbh;
+        $stmt = $pdo->prepare('SELECT * FROM users WHERE user_id = ? LIMIT 1');
+        $stmt->execute(array($uid));
+        $obj = $stmt->fetch(PDO::FETCH_OBJ);
+        return $obj->profile_image;
+    }
+    
     /**
      * @param $email string email of logging in user
      * @param $password string password of logging in user
@@ -86,8 +94,8 @@ class UserManager
     }
 
     public function uploadPic($file, $user_id) {
-
-        $stmt = $this->pdo->prepare('UPDATE users SET profile_image =:file WHERE user_id=:user');
+        $pdo = Dbh::getInstance()->dbh;
+        $stmt = $pdo->prepare('UPDATE users SET profile_image =:file WHERE user_id=:user');
         $stmt->bindParam(':file', $file);
         $stmt->bindParam(':user', $user_id);
         try {
@@ -96,6 +104,27 @@ class UserManager
             echo "Error: " . $e->getMessage();
         }
 
+    }
+    
+    public static function updateUserInfo($screenname, $username, $bio,
+        $website, $email, $country, $user_id) {
+            $pdo = Dbh::getInstance()->dbh;
+            $stmt = $pdo->prepare('UPDATE users SET screen_name =:screenname,
+                            username = :username, bio = :bio, website = :website,
+                            email = :email, country = :country WHERE user_id=:user');
+            $stmt->bindParam(':screenname', $screenname);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':bio', $bio);
+            $stmt->bindParam(':website', $website);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':country', $country);
+            $stmt->bindParam(':user', $user_id);
+         
+            try {
+                $stmt->execute();
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
     }
 
 }

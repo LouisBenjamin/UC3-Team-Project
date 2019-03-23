@@ -1,5 +1,5 @@
 <?php 
-require_once(__DIR__.'core/init.php');
+require_once('core/init.php');
 
 $user_id = $_SESSION['user_id'];
 
@@ -8,7 +8,20 @@ if(isset($_POST["insert"]))
     $user_id = $_SESSION['user_id'];
     $image = file_get_contents(addslashes($_FILES["image"]["tmp_name"]));
     $file=base64_encode($image);
-    $getUserManager->uploadPic($file,$user_id);
+    UserManager::uploadPic($file,$user_id);
+}
+
+if(isset($_POST["confirm"]))
+{
+    $user_id = $_SESSION['user_id'];
+    $screenname = $_REQUEST["screen_name"];
+    $username = $_REQUEST["username"];
+    $bio = $_REQUEST["bio"];
+    $website = $_REQUEST["website"];
+    $email = $_REQUEST["email"];
+    $country = $_REQUEST["country"];
+    UserManager::updateUserInfo($screenname, $username, $bio,
+                    $website, $email, $country, $user_id);
 }
 
 ?>
@@ -74,8 +87,8 @@ if(isset($_POST["insert"]))
                             <br><label class="label">Profile picture</label>
                             <?php
                             $user_id = $_SESSION['user_id'];
-                            $userimage=$getUserManager->image_retrieve($user_id);
-                            echo' <center> <img src="data:image/jpeg;base64,'.($userimage['profile_image']).'" height="100" width="100"/> </center>';
+                            $userimage=UserManager::image_retrieve($user_id);
+                            echo' <center> <img src="data:image/jpeg;base64,'.($userimage).'" height="100" width="100"/> </center>';
                             ?>
                             <form  method="post" enctype="multipart/form-data">
                                <input type="file" name="image" id="image" />
@@ -85,19 +98,19 @@ if(isset($_POST["insert"]))
                        <div id="information">
                         <div class="row">
                             <div class="container">
-                                <form action="">
+                                <form method="post" enctype="multipart/form-data">
                                     
                                     <fieldset>
                                         <legend id="legendA">Personal information</legend>
                                         <label class="label">Name</label><br />
                                         <!-- Needs to check for name inside of input box - link to back end-->
-                                        <input type="text" name="screen_name" class="textInput"> <br /><br />
+                                        <input type="text" name="screen_name" id="screen_name" class="textInput"> <br /><br />
                                         <label class="label">Username</label><br />
                                         <!--Need to insert a user check to retrieve ID -->
-                                        <input type="text" name="username" class="textInput"> <br /><br />
+                                        <input type="text" name="username" id="username" class="textInput"> <br /><br />
                                         
                                         <label class="label">Bio</label><br />
-                                        <textarea name ="bio" class="textInput" maxlength="2000" placeholder="Enter your bio (max: apprx. 300 words)" rows = "10"></textarea><br /><br />
+                                        <textarea name ="bio" id="bio" class="textInput" maxlength="2000" placeholder="Enter your bio (max: apprx. 300 words)" rows = "10"></textarea><br /><br />
                                         
 
                                         <label class="label">Country</label><span  style="width:40px;"></span><br />
@@ -357,9 +370,9 @@ if(isset($_POST["insert"]))
                                     <fieldset>
                                         <legend id="legendA">Contact information and links</legend>
                                         <label class="label">Email</label><br />
-                                        <input type="text" name="email" class="textInput"> <br /><br />
+                                        <input type="text" name="email" id="email" class="textInput"> <br /><br />
                                         <label class="label">Website</label><br />
-                                        <input type="text" name="website" class="textInput"> <br /><br />
+                                        <input type="text" name="website" id="website" class="textInput"> <br /><br />
                                     </fieldset>
                                     <!-- The following code is meant to allow the change of password -->
                         <!--
@@ -369,7 +382,7 @@ if(isset($_POST["insert"]))
                             <input type = "password" name="usrNm"/>(6 to 20 characters)
                         </form>
                     -->
-                    <input type="submit" value="Confirm">
+                    <input type="submit" value="Confirm" name="confirm" id="confirm" />
                     <input type="reset" value="Start over">
                 </form>
             </div>

@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
   if (isset($_POST['image_submit'])) {
     $image = file_get_contents(addslashes($_FILES['image']['tmp_name']));
     $file = base64_encode($image);
-    $getUserManager->uploadPic($file, $user_data->user_id);
+    UserManager::uploadPic($file, $user_data->user_id);
   }
 }
 
@@ -32,6 +32,17 @@ if (isset($_GET['id'])) {
             $('#follow-btn').load('includes/follow.php', {
                 idol_id: idol_id, fan_id: fan_id
             });
+        }
+
+        function edit(element) {
+            var parent=$(element).parent().parent();
+            var placeholder=$(parent).find('.text-info').text();
+            //hide label
+            $(parent).find('label').hide();
+            //show input, set placeholder
+            var input=$(parent).find('input[type="text"]');
+            $(input).show();
+            $(input).attr('placeholder', placeholder);
         }
     </script>
 
@@ -83,11 +94,15 @@ if (isset($_GET['id'])) {
                 </div>
                 <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                     <div class="container">
-                        <h2><?php echo $user_data->username; ?>
-                            <button type="submit" name="follow" class="btn btn-default" style="margin-left: 570px">
-                                Edit
-                            </button>
-                        </h2>
+                    	
+                    	<H2>
+                    	<label for="name" class="control-label">
+                    		<p class="text-info"><?php echo $user_data->username; ?><i class="icon-star"></i></p>
+                    	</label>
+                        <input type="text" class="input-medium" style="display:none;">
+                            <a href="profileEdit.php" onclick="edit(this);" style="margin-left: 570px">Edit</a>
+                        </H2>
+                        
                         <p><?php echo $user_data->bio; ?></p>
 
                     </div>
