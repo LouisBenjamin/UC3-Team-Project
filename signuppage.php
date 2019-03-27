@@ -1,39 +1,51 @@
 <?php
 require_once __DIR__.'./core/init.php';
+require_once __DIR__.'./includes/header.php';
+
+if (isset($_POST['signup'])) {
+    ['signUpEmail' => $email, 'signUpName' => $name, 'signUpPwd' => $pwd] = $_POST;
+    $sign_up_error = $getUserManager->validateInputInfo($email,$name,$pwd);
+    if (empty($sign_up_error)){
+        $getUserManager->register($email,$name,password_hash($pwd,PASSWORD_BCRYPT));
+        $getUserManager->login($email,$pwd);
+        $host = $_SERVER['HTTP_HOST'];
+        $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+        $home_url = 'home.php';
+        header("Location: http://$host$uri/$home_url");
+        exit;
+    }
+}
 ?>
-<!doctype html>
-<html lang="en-US">
-	<head>
-		<title>tato</title>
-		<meta charset="UTF-8" />
-		<link rel="stylesheet" href="assets/css/font-awesome.css"/>
-		<link rel="stylesheet" href="assets/css/login.css"/>
-		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <script src="assets/js/jquery.min.js" defer></script>
-        <script src="assets/js/bootstrap.min.js" defer></script>
-	</head>
-	<!--Helvetica Neue-->
-	
-	<body>
+<h3 class="login-heading mb-4">Join Tato</h3>
+<form method="post">
+    <div class="form-label-group">
+        <input type="text" class="form-control" id="signUpName" name="signUpName" placeholder="Full Name"
+            <?php if (isset($_POST['signUpName'])) echo 'value="' . htmlspecialchars($_POST['signUpName']) . '"' ?>
+        required>
+        <label for="signUpName">Full Name</label>
+    </div>
+    <div class="form-label-group">
+        <input type="email" class="form-control" id="signUpEmail" name="signUpEmail" placeholder="Email address"
+            <?php if (isset($_POST['signUpEmail'])) echo 'value="' . htmlspecialchars($_POST['signUpEmail']) . '"' ?>
+               required>
+        <label for="signUpEmail">Email Address</label>
+    </div>
 
+    <div class="form-label-group">
+        <input type="password" class="form-control" id="signUpPwd" name="signUpPwd" placeholder="Password" required>
+        <label for="signUpPwd">Password</label>
+    </div>
+    <?php
+    if (isset($sign_up_error)) {
+        echo '<div class="span-fp-error" style="color:darkred">' . $sign_up_error . '<br></div>';
+    }
+    ?>
+    <input class="btn btn-lg btn-secondary btn-block btn-outline-light text-uppercase font-weight-bold mb-2" type="submit"
+           name="signup" value="Count Me In!">
+</form>
+<a class="btn-link" href="loginpage.php">Already in?</a>
 
-    <div class="container-fluid">
-		  <div class="row no-gutter">
-		    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-		    <div class="col-md-8 col-lg-6">
-		      <div class="login d-flex align-items-center py-5">
-		        <div class="container">
-		          <div class="row">
-		            <div id="inputBoxes" class="col-md-9 col-lg-8 mx-auto">
-                        <?php require_once "includes/signup.php"; ?>
-                        <a href="loginpage.php">Already have an account?</a>
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-
-</body>
-</html>
+    <!-- LOGIN SIGNUP FOOTER -->
+<?php
+require_once __DIR__.'./includes/footer.php';
+?>
