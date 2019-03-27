@@ -49,7 +49,7 @@ if (isset($_GET['id'])) {
                 <li id="post-new"><a href="home.php">Home</a></li>
 
                 <!-- redirect to -->
-                <li><a href="#" id="post-list">About</a></li>
+                <li><a href="AboutPage.html" id="post-list">About</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
