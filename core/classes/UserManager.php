@@ -53,19 +53,37 @@ class UserManager
      * @param $password string password of logging in user
      * @return bool success then true, fail then false
      */
-    function validateName($name): bool {
+    private function validateName($name): bool {
         return (strlen($name) < 7 && ctype_alpha($name));
     }
 
-    function validateEmail($email): bool {
+    private function validateEmail($email): bool {
         return (filter_var($email, FILTER_VALIDATE_EMAIL));
     }
 
-    function validatePassword($password): bool {
+    private function validatePassword($password): bool {
         return (strlen($password) >= 7);
     }
 
-    public function emailCheck($email) {
+    public function validateInputInfo($email,$name,$password) {
+        $sign_up_error = '';
+        if (empty($email) or empty($_POST['signUpPwd']) or empty($name)) {
+            $sign_up_error = "All fields are mandatory";
+        } else {
+            if (!$this->validateName($name)) {
+                $sign_up_error = "Invalid name format";
+            } else if (!$this->validateEmail($email)) {
+                $sign_up_error = "Invalid email format";
+            } else if (!$this->validatePassword($password)) {
+                $sign_up_error = "Password is too short";
+            } else if ($this->emailExists($email) == true) {
+                $sign_up_error = "Email already exist";
+            }
+        }
+        return $sign_up_error;
+    }
+
+    public function emailExists($email) {
         $stmt = $this->pdo->prepare('SELECT email FROM users WHERE email=:email');
         $stmt->bindParam(":email", $email);
         $stmt->execute();

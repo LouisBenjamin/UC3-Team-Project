@@ -3,33 +3,17 @@
 require_once __DIR__ . '/../core/init.php';
 
 if (isset($_POST['signup'])) {
-    $name = $_POST['signUpName'];
-    $email = $_POST['signUpEmail'];
-    $password = $_POST['signUpPwd'];
-    if (empty($email) or empty($_POST['signUpPwd']) or empty($name)) {
-        $sign_up_error = "All fields are mandatory";
-    } else {
-        if (!$getUserManager->validateEmail($email)) {
-            $sign_up_error = "Invalid email format";
-        } else if (!$getUserManager->validateName($name)) {
-            $sign_up_error = "Invalid name format";
-        } else if (!$getUserManager->validatePassword($password)) {
-            $sign_up_error = "Password is too short";
-        } else {
-            if ($getUserManager->emailCheck($email) == true) {
-                $sign_up_error = "Email already exist";
-            } else {
-                $getUserManager->register($email, $name, password_hash($password,PASSWORD_BCRYPT));
-                $getUserManager->login($email,$password);
-                $host = $_SERVER['HTTP_HOST'];
-                $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-                $home_url = 'home.php';
-                header("Location: http://$host$uri/$home_url");
-                exit;
-            }
-        }
+    ['signUpEmail' => $email, 'signUpName' => $name, 'signUpPwd' => $pwd] = $_POST;
+    $sign_up_error = $getUserManager->validateInputInfo($email,$name,$pwd);
+    if (empty($sign_up_error)){
+        $getUserManager->register($email,$name,password_hash($pwd,PASSWORD_BCRYPT));
+        $getUserManager->login($email,$pwd);
+        $host = $_SERVER['HTTP_HOST'];
+        $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+        $home_url = 'home.php';
+        header("Location: http://$host$uri/$home_url");
+        exit;
     }
-
 }
 ?>
 
