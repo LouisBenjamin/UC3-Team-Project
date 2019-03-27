@@ -4,6 +4,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 
+date_default_timezone_set('America/Toronto');
+
 class TatoTest extends TestCase
 {
     public function testPostTato(){
