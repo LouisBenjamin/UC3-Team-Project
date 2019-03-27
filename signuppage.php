@@ -25,8 +25,8 @@ require_once __DIR__.'./core/init.php';
 		        <div class="container">
 		          <div class="row">
 		            <div id="inputBoxes" class="col-md-9 col-lg-8 mx-auto">
-                        <?php require_once "includes/login.php"; ?>
-                        <a href="signuppage.php">First time?</a>
+                        <?php require_once "includes/signup.php"; ?>
+                        <a href="loginpage.php">Already have an account?</a>
 		            </div>
 		          </div>
 		        </div>

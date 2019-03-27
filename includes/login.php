@@ -21,6 +21,7 @@ if (isset($_POST['email']) && isset($_POST['pwd'])) {
 ?>
 
 <div class="login-div">
+    <h3 class="login-heading mb-4">Welcome to Tato</h3>
     <form method="post">
         <div class="form-label-group">
             <?php
@@ -50,7 +51,5 @@ if (isset($_POST['email']) && isset($_POST['pwd'])) {
             <label class="custom-control-label" for="customCheck1">Remember password</label>
         </div>
         <input class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" name="login" value="Sign in">
-        <div class="text-center">
-            <a class="small" href="#">First time?</a></div>
     </form>
 </div>
