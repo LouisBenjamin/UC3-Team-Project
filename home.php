@@ -32,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         #a { background-color: lightblue; }
         #b { background-color: lightgreen; }
         #userName { color: black; font-weight: bold; font-size: medium; }
-        #tatosfeed { font-weight: bold; font-size: large; padding: 11.75px;
-                     background-color:lightgray; border-radius: 5px; }
+        #tatosfeed { color: antiquewhite;font-weight: bold; font-size: large; padding: 11.75px;
+                     background-image:url("https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"); border-radius: 5px; }
         footer {background-color: black; color: #555; padding: 30px; }
     </style>
 
@@ -114,7 +114,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <textarea class="form-control" id="tatoStatus" name="tatoStatus" rows="3"
                                           required onchange="validateTato()"></textarea>
                                 <p id="tatoInvalid" class="span-fp-error"></p>
-                                <input id="tatoImage" type="file" name="tatoImage">
+                                <div style="display:flex;justify-content: space-between">
+                                    <input id="tatoImage" type="file" name="tatoImage">
+                                    <input type="submit" name="tatoSubmit" class="btn btn-success" value="Potato" disabled>
+                                </div>
                             </div>
                             <script>
                                 ["click", "change"].forEach(function (evt) {
@@ -124,9 +127,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     document.tatoForm.tatoStatus.addEventListener(evt, validateTato, false);
                                 });
                             </script>
-                            <div style="text-align: left">
-                                <input type="submit" name="tatoSubmit" class="btn btn-success" value="Potato" disabled>
-                            </div>
                         </form>
                     </div>
                     <br>

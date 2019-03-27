@@ -18,29 +18,39 @@ if (isset($_POST['email']) && isset($_POST['pwd'])) {
     }
   }
 }
-
 ?>
 
 <div class="login-div">
     <form method="post">
-        <ul>
-            <li>
-              <?php
-              if (isset($_POST['email'])) {
-                echo '<input type="text" name="email" value="' . htmlspecialchars($_POST['email']) . '" />';
-              } else {
-                echo '<input type="text" name="email" value="" placeholder="Please enter your Email here">';
-              } ?>
-            </li>
-            <li>
-                <input type="password" name="pwd" placeholder="password"/>
-                <input type="submit" name="login" value="Log in"/>
-            </li>
-        </ul>
-      <?php
-      if (isset($login_error)) {
-        echo '<div class="span-fp-error">' . $login_error . '</div>';
-      }
-      ?>
+        <div class="form-label-group">
+            <?php
+            if (isset($_POST['email'])) {
+                //echo '<input type="text" name="email" value="' . htmlspecialchars($_POST['email']) . '" />';
+                echo '<input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address" 
+                                value="' . htmlspecialchars($_POST['email']) . '" required>';
+            } else {
+                //echo '<input type="text" name="email" value="" placeholder="Please enter your Email here">';
+                echo '<input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address" required autofocus>';
+            } ?>
+
+            <label for="inputEmail">Email address</label>
+        </div>
+
+        <div class="form-label-group">
+            <input type="password" id="inputPassword" class="form-control" name="pwd" placeholder="Password" required>
+            <label for="inputPassword">Password</label>
+        </div>
+        <?php
+        if (isset($login_error)) {
+            echo '<div class="span-fp-error" style="color:darkred">' . $login_error . '<br></div>';
+        }
+        ?>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="customCheck1">
+            <label class="custom-control-label" for="customCheck1">Remember password</label>
+        </div>
+        <input class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" name="login" value="Sign in">
+        <div class="text-center">
+            <a class="small" href="#">First time?</a></div>
     </form>
 </div>

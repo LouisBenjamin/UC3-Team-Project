@@ -3,9 +3,9 @@
 require_once __DIR__ . '/../core/init.php';
 
 if (isset($_POST['signup'])) {
-    $name = $_POST['uname'];
-    $email = $_POST['email'];
-    $password = $_POST['psw'];
+    $name = $_POST['signUpName'];
+    $email = $_POST['signUpEmail'];
+    $password = $_POST['signUpPwd'];
     if (empty($email) or empty($password) or empty($name)) {
         $sign_up_error = "All fields are mandatory";
     } else {
@@ -28,28 +28,25 @@ if (isset($_POST['signup'])) {
 }
 ?>
 
-
 <form method="post">
-    <div class="signup-div">
-        <h3>Sign up </h3>
-        <ul>
-            <li>
-                <input type="text" name="uname" placeholder="Full Name"/>
-            </li>
-            <li>
-                <input type="email" name="email" placeholder="Email"/>
-            </li>
-            <li>
-                <input type="password" name="psw" placeholder="Password"/>
-            </li>
-            <li>
-                <input type="submit" name="signup" Value="Tato">
-            </li>
-        </ul>
+    <div class="form-label-group">
+        <input type="text" class="form-control" id="signUpName" name="signUpName" placeholder="Full Name">
+        <label for="signUpName">Full Name</label>
+    </div>
+    <div class="form-label-group">
+        <input type="email" class="form-control" id="signUpEmail" name="signUpEmail" placeholder="Email address" required>
+        <label for="signUpEmail">Email Address</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="password" class="form-control" id="signUpPwd" name="signUpPwd" placeholder="Password" required>
+        <label for="signUpPwd">Password</label>
     </div>
     <?php
-    if (isset($sign_up_error)) {
-        echo '<div class="span-fp-error">' . $sign_up_error . '</div>';
+    if (isset($login_error)) {
+        echo '<div class="span-fp-error" style="color:darkred">' . $login_error . '<br></div>';
     }
     ?>
+    <input class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit"
+           name="signup" value="I'm In!">
 </form>
