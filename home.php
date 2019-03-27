@@ -3,7 +3,7 @@ include dirname(__FILE__) . '/core/init.php';
 date_default_timezone_set('EST');
 /** @var $pdo PDO */
 global $pdo;
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if (isset($_SESSION['user_id'])) {
     $user_data = UserManager::getUserFromId($_SESSION['user_id']);
 } else {
@@ -14,11 +14,7 @@ if (isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['tatoSubmit'])) {
         $text = htmlspecialchars($_POST['tatoStatus']);
-        if (is_uploaded_file($_FILES['tatoImage']['tmp_name'])) {
-            $image = file_get_contents(addslashes($_FILES['tatoImage']['tmp_name']));
-            $file = base64_encode($image);
-        } else $file = NULL;
-        $getTato->postTato($user_data->user_id, $text, $file);
+        $getTatoManager->postTato($user_data->user_id, $text, $_FILES['tatoImage']['tmp_name']);
     }
 }
 ?>
@@ -131,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                         </form>
                     </div>
-                    <div style="text-align: left"> <?php $getTato->showTatoes(); ?> </div>
+                    <div style="text-align: left"> <?php $getTatoManager->showTatoes(); ?> </div>
 
                 </div>
             </div>

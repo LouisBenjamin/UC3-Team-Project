@@ -1,7 +1,7 @@
 <?php
 require_once('UserManager.php');
 
-class Tato
+class TatoManager
 {
     /** @var PDO */
     protected $pdo;
@@ -10,14 +10,34 @@ class Tato
         $this->pdo = $pdo;
     }
 
-    public function postTato($uid, $text, $file) {
+    function processImage($path){
+        $image = file_get_contents(addslashes($path));
+        return base64_encode($image);
+    }
+
+    public function postTato($uid, $text, $path) {
+        if(is_uploaded_file($path))
+            $file = $this->processImage($path);
+        else $file = NULL;
         $ins_db = $this->pdo->prepare('INSERT INTO tatos (user_id,status,tato_image,created) VALUES (:uid,:text,:file,:created)');
-        $ins_db->execute(array(
+        return $ins_db->execute(array(
             ':uid' => $uid,
             ':text' => $text,
             ':file' => $file,
             ':created' => date("Y-m-d H:i:s", time()),
         ));
+    }
+
+    public function postPic($tatoid) {
+        $stmt = $this->pdo->prepare('SELECT tato_image from tatos  where tato_id=:id');
+      $stmt->bindParam(":id",$tatoid);
+      $stmt->execute();
+        $count = $stmt->rowCount();
+        if ($count > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function showTatoes() {

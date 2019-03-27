@@ -11,7 +11,6 @@ if (isset($_GET['id'])) {
   if (isset($_POST['image_submit'])) {
     $image = file_get_contents(addslashes($_FILES['image']['tmp_name']));
     $file = base64_encode($image);
-    echo base64_decode($file);
     $getUserManager->uploadPic($file, $user_data->user_id);
   }
 }
