@@ -27,13 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!--        <link rel="stylesheet" href="css/main.css">-->
     <style>
-        .well p {
-            text-align: left;
-        }
-
-        .well img {
-            margin: 20px 0;
-        }
+        .well p { text-align: left; }
+        .well img { margin: 20px 0; }
+        #a { background-color: lightblue; }
+        #b { background-color: lightgreen; }
+        #userName { color: black; font-weight: bold; font-size: medium; }
+        #tatosfeed { font-weight: bold; font-size: large; padding: 11.75px;
+                     background-color:lightgray; border-radius: 5px; }
+        footer {background-color: black; color: #555; padding: 30px; }
     </style>
 
     <script src="https://code.jquery.com/jquery-2.2.1.min.js" defer></script>
@@ -73,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <li class="active" id="post-new"><a href="home.php">Home</a></li>
 
                 <!-- redirect to -->
-                <li><a href="#" id="post-list">About</a></li>
+                <li><a href="AboutPage.html" id="post-list">About</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -92,11 +93,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="row">
         <div class="col-sm-3 well">
             <div class="well" style="margin-bottom: 0">
-                <h5><a href="profile.php"><?= $user_data->username; ?></a></h5>
                 <img src="data:image/jpeg;base64,<?php echo $user_data->profile_image; ?>" class="img-circle"
                      height="65" width="65" alt="Avatar">
-                <p><b> Followers: <?= $user_data->fan_count; ?></b></p>
-                <p><b> Following: <?= $user_data->idol_count; ?></b></p>
+                <h5><a href="profile.php" id="userName"><?= $user_data->username; ?></a></h5>
+
+                <p id="a"><b> Followers: <?= $user_data->fan_count; ?></b></p>
+                <p id="b"><b> Following: <?= $user_data->idol_count; ?></b></p>
 
             </div>
         </div>
@@ -127,6 +129,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                         </form>
                     </div>
+                    <br>
+                    <p id="tatosfeed"> Tatos Feed </p>
                     <div style="text-align: left"> <?php $getTatoManager->showTatoes(); ?> </div>
 
                 </div>
@@ -135,6 +139,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     </div>
 </div>
+    <footer class="container-fluid text-center">
 
+    </footer>
 </body>
 </html>
