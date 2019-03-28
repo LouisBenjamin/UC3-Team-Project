@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
 
 </head>
 
-<body>
+<body style="background-image: url(assets/images/loginImg.png);">
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -64,7 +64,7 @@ if (isset($_GET['id'])) {
     </div>
 </nav>
 
-<div class="container">
+<div class="container" style="margin-top: 100px;">
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading"><h4 style='text-align: center;'>User Profile</h4></div>
@@ -84,7 +84,7 @@ if (isset($_GET['id'])) {
                 <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                     <div class="container">
                         <h2><?php echo $user_data->username; ?>
-                            <button type="submit" name="follow" class="btn btn-default" style="margin-left: 570px">
+                            <button type="submit" name="follow" class="btn btn-default" style="margin-left: 400px">
                                 Edit
                             </button>
                         </h2>
