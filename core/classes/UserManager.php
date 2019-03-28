@@ -53,15 +53,15 @@ class UserManager
      * @param $password string password of logging in user
      * @return bool success then true, fail then false
      */
-    private function validateName($name): bool {
+    public function validateName($name): bool {
         return (strlen($name) < 7 && ctype_alpha($name));
     }
 
-    private function validateEmail($email): bool {
+    public function validateEmail($email): bool {
         return (filter_var($email, FILTER_VALIDATE_EMAIL));
     }
 
-    private function validatePassword($password): bool {
+    public function validatePassword($password): bool {
         return (strlen($password) >= 7);
     }
 
