@@ -1,6 +1,10 @@
 <?php
 require_once('UserManager.php');
 
+/* This is a tato class that manages alls functions of the user. It includes posting and showing tatos, pictures
+ */
+
+
 class TatoManager
 {
     /** @var PDO */
@@ -10,11 +14,13 @@ class TatoManager
         $this->pdo = $pdo;
     }
 
+    /*This encodes the image*/
     function processImage($path){
         $image = file_get_contents(addslashes($path));
         return base64_encode($image);
     }
 
+    /*Inserst tato in database*/
     public function postTato($uid, $text, $path) {
         if(is_uploaded_file($path))
             $file = $this->processImage($path);
@@ -27,7 +33,7 @@ class TatoManager
             ':created' => date("Y-m-d H:i:s", time()),
         ));
     }
-
+    /*Retrieve photo in database*/
     public function postPic($tatoid) {
         $stmt = $this->pdo->prepare('SELECT tato_image from tatos  where tato_id=:id');
       $stmt->bindParam(":id",$tatoid);
@@ -39,7 +45,7 @@ class TatoManager
             return false;
         }
     }
-
+    /*Prints all tatos found in databsae*/
     public function showTatoes() {
         // Select all info from tatos table
         $sel_data = $this->pdo->prepare('
