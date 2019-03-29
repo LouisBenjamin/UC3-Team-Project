@@ -8,7 +8,7 @@ if(isset($_POST["insert"]))
     $user_id = $_SESSION['user_id'];
     $image = file_get_contents(addslashes($_FILES["image"]["tmp_name"]));
     $file=base64_encode($image);
-    $getUser->upload($file,$user_id);
+    $getUserManager->uploadPic($file,$user_id);
 }
 
 ?>
@@ -74,7 +74,7 @@ if(isset($_POST["insert"]))
                             <br><label class="label">Profile picture</label>
                             <?php
                             $user_id = $_SESSION['user_id'];
-                            $userimage=$getUser->image_retrieve($user_id);
+                            $userimage=$getUserManager->image_retrieve($user_id);
                             echo' <center> <img src="data:image/jpeg;base64,'.($userimage['profile_image']).'" height="100" width="100"/> </center>';
                             ?>
                             <form  method="post" enctype="multipart/form-data">

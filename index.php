@@ -1,7 +1,7 @@
 <?php
 //error_reporting(E_ALL);
 //ini_set("display_errors", TRUE);
-require 'core/init.php';
+require_once __DIR__ . '/core/init.php';
 
 ?>
 <!doctype html>
@@ -40,14 +40,14 @@ require 'core/init.php';
         </div>
             <?php
           else:
-              require('includes/login.php');
+              require('includes/header.php');
           ?>
         </div>
         <!--log in wrapper end-->
 
         <!-- SignUp Section -->
         <div class="signup-wrapper">
-            <p><?php require 'includes/signup.php';?></p>
+            <p><?php require 'includes/footer.php';?></p>
         </div>
         <!-- SIGN UP wrapper end -->
         <?php endif; ?>

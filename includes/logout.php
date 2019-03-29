@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-setcookie(session_name(), "", time() - 3600*24*7);
+setcookie(session_name(), "", time() - 3600 * 24 * 7);
 session_destroy();
 $login_url = '../index.php';
 ?>
