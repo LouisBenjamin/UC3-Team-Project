@@ -2,10 +2,9 @@
 
 session_start();
 include 'database/connection.php';
-include 'classes/user.php';
-include 'classes/tato.php';
-
+include 'classes/UserManager.php';
+include 'classes/TatoManager.php';
+date_default_timezone_set('America/Toronto');
 $pdo = Dbh::getInstance()->dbh;
-$getUser = new User($pdo);
-$getTato = new Tato($pdo);
-define("Base_URL", "http://localhost/tato/");
+$getUserManager = new UserManager($pdo);
+$getTatoManager = new TatoManager($pdo);

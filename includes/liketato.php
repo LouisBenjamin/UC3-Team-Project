@@ -2,6 +2,8 @@
 
 require_once __DIR__.'/../core/init.php';
 
+
+
 /** @var PDO $pdo */
 $pdo = Dbh::getInstance()->dbh;
 
@@ -39,6 +41,6 @@ LIMIT 1');
 $stmt->execute(array($tato_id));
 $res = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if($res['like_flag']) echo 'Liked ';
-else echo 'Like ';
+if($res['like_flag']) echo '<img src="assets/images/unlike.png" alt="unlike" width="30px">';
+else echo '<img src="assets/images/like.png" alt="like" width="30px">';
 echo $res['likes_count'];
