@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../database/connection.php';
 
+/* This is a user class that manages alls functions of the user. It includes most database interactions.
+ */
 class UserManager
 {
     /** @var $pdo PDO */
@@ -53,18 +55,21 @@ class UserManager
      * @param $password string password of logging in user
      * @return bool success then true, fail then false
      */
+
+    /*Checks if username is under 7 characters*/
     public function validateName($name): bool {
         return (strlen($name) < 7 && ctype_alpha($name));
     }
 
+    /*Validates email*/
     public function validateEmail($email): bool {
         return (filter_var($email, FILTER_VALIDATE_EMAIL));
     }
-
+    /*Validates password*/
     public function validatePassword($password): bool {
         return (strlen($password) >= 7);
     }
-
+    /*Validates sign up information*/
     public function validateInputInfo($email,$name,$password) {
         $sign_up_error = '';
         if (empty($email) or empty($_POST['signUpPwd']) or empty($name)) {
@@ -83,6 +88,8 @@ class UserManager
         return $sign_up_error;
     }
 
+    /* Checks if the email entered existsts in the database */
+
     public function emailExists($email) {
         $stmt = $this->pdo->prepare('SELECT email FROM users WHERE email=:email');
         $stmt->bindParam(":email", $email);
@@ -95,6 +102,8 @@ class UserManager
         }
     }
 
+    /*Creates or register a user to the database*/
+
     public function register($email, $name, $password) {
         $stmt = $this->pdo->prepare('INSERT INTO users (username,email,psw) VALUES (:name, :email, :password)');
         $stmt->bindParam(":name", $name);
@@ -102,6 +111,8 @@ class UserManager
         $stmt->bindParam(":password", $password);
         $stmt->execute();
     }
+
+    /*Allows user to upload picturs into the database*/
 
     public function uploadPic($file, $user_id) {
 
