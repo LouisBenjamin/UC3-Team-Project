@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'./core/init.php';
-require_once __DIR__.'./includes/header.php';
+require_once __DIR__.'/core/init.php';
+require_once __DIR__.'/includes/header.php';
 
 if (isset($_POST['email']) && isset($_POST['pwd'])) {
     if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
