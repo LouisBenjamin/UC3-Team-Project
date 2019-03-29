@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 tato.tatoStatus.required = false;
                 tato.tatoImage.required = false;
-                errorMsg.innerHTML = '';
+                errorMsg.innerHTML = "You have "+ (140-tato.tatoStatus.value.length) + " characters remaining.";
                 invalid = false;
             }
             document.tatoForm.tatoSubmit.disabled = invalid;
